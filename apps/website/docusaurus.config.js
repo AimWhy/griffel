@@ -1,7 +1,13 @@
 // @ts-check
 
-const lightCodeTheme = require('prism-react-renderer/themes/vsLight');
-const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
+const { themes } = require('prism-react-renderer');
+const prismTheme = {
+  ...themes.nightOwl,
+  plain: {
+    ...themes.nightOwl.plain,
+    backgroundColor: '#000',
+  },
+};
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -12,11 +18,17 @@ const config = {
   onBrokenMarkdownLinks: 'throw',
 
   title: 'Griffel',
-  tagline: 'Dinosaurs are cool',
+  // tagline: 'Dinosaurs are cool',
 
   url: 'https://griffel.js.org',
   baseUrl: '/',
   // favicon: 'img/favicon.ico',
+
+  markdown: {
+    mermaid: true,
+  },
+
+  plugins: [require.resolve('./src/components/Playground/docusaurusPlugin')],
 
   presets: [
     [
@@ -34,41 +46,67 @@ const config = {
             require.resolve('./src/css/custom.css'),
             require.resolve('./src/css/fonts.css'),
             require.resolve('./src/css/theme.css'),
-            require.resolve('@codesandbox/sandpack-react/dist/index.css'),
           ],
         },
       }),
     ],
   ],
 
+  themes: ['@docusaurus/theme-mermaid'],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      autoCollapseSidebarCategories: false,
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
+      },
+
+      docs: {
+        sidebar: {
+          autoCollapseCategories: false,
+        },
+      },
+      footer: {
+        links: [
+          {
+            label: 'Open source at Microsoft',
+            href: 'https://opensource.microsoft.com',
+          },
+          {
+            label: 'Microsoft Privacy Statement',
+            href: 'http://aka.ms/privacy',
+          },
+        ],
+      },
       navbar: {
-        title: 'Griffel',
-        // logo: {
-        //   alt: 'My Site Logo',
-        //   src: 'img/logo.svg',
-        // },
+        logo: {
+          alt: 'Griffel.js',
+          src: 'img/griffel.png',
+        },
         items: [
           {
             type: 'doc',
             docId: 'react/install',
-            position: 'left',
+            position: 'right',
             label: 'For React.js',
           },
           {
             type: 'doc',
-            docId: 'try-it-out',
-            position: 'left',
+            docId: 'try-it-out/try-it-out',
+            position: 'right',
             label: 'Try it out',
+          },
+          {
+            href: 'https://github.com/microsoft/griffel',
+            position: 'right',
+            className: 'navbar-github-link',
+            html: 'Github <span aria-hidden="true" />',
           },
         ],
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        darkTheme: prismTheme,
         prism: {
           additionalLanguages: ['javascript', 'css'],
         },

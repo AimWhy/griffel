@@ -1,7 +1,7 @@
 import type { Evaluator } from '@linaria/babel-preset';
 
 import { validateOptions } from './validateOptions';
-import { BabelPluginOptions } from './types';
+import type { BabelPluginOptions } from './types';
 
 describe('validateOptions', () => {
   describe('modules', () => {
@@ -35,12 +35,21 @@ describe('validateOptions', () => {
       expect(() => validateOptions(pluginOptions)).not.toThrow();
     });
 
-    it('throws on wrong options', () => {
+    it('throws when babelOptions is not valid', () => {
       const pluginOptions = { babelOptions: [] };
 
       // @ts-expect-error Invalid options are passed for testing purposes
       expect(() => validateOptions(pluginOptions)).toThrowErrorMatchingInlineSnapshot(
         `"Validation failed for passed config: data/babelOptions must be object"`,
+      );
+    });
+
+    it('throws when generateMetadata is not valid', () => {
+      const pluginOptions = { generateMetadata: 3 };
+
+      // @ts-expect-error Invalid options are passed for testing purposes
+      expect(() => validateOptions(pluginOptions)).toThrowErrorMatchingInlineSnapshot(
+        `"Validation failed for passed config: data/generateMetadata must be boolean"`,
       );
     });
   });

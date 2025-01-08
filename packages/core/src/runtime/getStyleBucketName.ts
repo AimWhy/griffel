@@ -1,4 +1,5 @@
-import { StyleBucketName } from '../types';
+import type { StyleBucketName } from '../types';
+import type { AtRules } from './utils/types';
 
 /**
  * Maps the long pseudo name to the short pseudo name. Pseudos that match here will be ordered, everything else will
@@ -39,27 +40,39 @@ const pseudosMap: Record<string, StyleBucketName | undefined> = {
  * "h"
  * "f"
  * ```
+ *
+ * @internal
  */
-export function getStyleBucketName(pseudo: string, media: string, support: string): StyleBucketName {
-  // We are grouping all the at-rules like @media, @supports etc under `t` bucket.
-  if (media || support) {
+export function getStyleBucketName(selectors: string[], atRules: AtRules): StyleBucketName {
+  if (atRules.media) {
+    return 'm';
+  }
+
+  // We are grouping all the at-rules like @supports etc. under `t` bucket.
+  if (atRules.layer || atRules.supports) {
     return 't';
   }
 
-  const normalizedPseudo = pseudo.trim();
+  if (atRules.container) {
+    return 'c';
+  }
 
-  if (normalizedPseudo.charCodeAt(0) === 58 /* ":" */) {
-    // We send through a subset of the string instead of the full pseudo name.
-    // For example:
-    // - `"focus-visible"` name would instead of `"us-v"`.
-    // - `"focus"` name would instead of `"us"`.
-    // Return a mapped pseudo else default bucket.
+  if (selectors.length > 0) {
+    const normalizedPseudo = selectors[0].trim();
 
-    return (
-      pseudosMap[normalizedPseudo.slice(4, 8)] /* allows to avoid collisions between "focus-visible" & "focus" */ ||
-      pseudosMap[normalizedPseudo.slice(3, 5)] ||
-      'd'
-    );
+    if (normalizedPseudo.charCodeAt(0) === 58 /* ":" */) {
+      // We send through a subset of the string instead of the full pseudo name.
+      // For example:
+      // - `"focus-visible"` name would instead of `"us-v"`.
+      // - `"focus"` name would instead of `"us"`.
+      // Return a mapped pseudo else default bucket.
+
+      return (
+        pseudosMap[normalizedPseudo.slice(4, 8)] /* allows to avoid collisions between "focus-visible" & "focus" */ ||
+        pseudosMap[normalizedPseudo.slice(3, 5)] ||
+        'd'
+      );
+    }
   }
 
   // Return default bucket

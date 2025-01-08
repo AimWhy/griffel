@@ -1,7 +1,7 @@
-import { __styles, mergeClasses } from '@griffel/react';
+import { makeStyles } from '@griffel/react';
 
-console.log(__styles, mergeClasses);
+console.log(makeStyles);
 
 export default {
-  name: 'makeStyles + mergeClasses (build time)',
+  name: 'makeStyles (runtime)',
 };

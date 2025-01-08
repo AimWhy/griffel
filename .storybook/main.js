@@ -1,10 +1,8 @@
 module.exports = {
+  core: {},
   stories: [],
-  addons: ['@storybook/addon-essentials'],
-  babel: async options => {
-    return {
-      ...options,
-      presets: [...options.presets, '@babel/typescript'],
-    };
+  addons: ['@storybook/addon-webpack5-compiler-babel'],
+  docs: {
+    autodocs: true,
   },
 };

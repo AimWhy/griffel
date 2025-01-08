@@ -1,25 +1,27 @@
-import { resolveStaticStyleRules } from './runtime/resolveStaticStyleRules';
-import { MakeStaticStylesOptions, GriffelStaticStyles } from './types';
+import type { GriffelStaticStyles } from '@griffel/style-types';
 
-/**
- * Register static css.
- * @param styles - styles object or string.
- */
-export function makeStaticStyles(styles: GriffelStaticStyles | GriffelStaticStyles[]) {
-  const styleCache: Record<string, true> = {};
+import { insertionFactory } from './insertionFactory';
+import { resolveStaticStyleRules } from './runtime/resolveStaticStyleRules';
+import type { GriffelRenderer } from './types';
+import type { GriffelInsertionFactory } from './types';
+
+export interface MakeStaticStylesOptions {
+  renderer: GriffelRenderer;
+}
+
+export function makeStaticStyles(
+  styles: GriffelStaticStyles | GriffelStaticStyles[],
+  factory: GriffelInsertionFactory = insertionFactory,
+) {
+  const insertStyles = factory();
   const stylesSet: GriffelStaticStyles[] = Array.isArray(styles) ? styles : [styles];
 
   function useStaticStyles(options: MakeStaticStylesOptions): void {
-    const cacheKey = options.renderer.id;
-    if (styleCache[cacheKey]) {
-      return;
-    }
-
-    for (const styleRules of stylesSet) {
-      options.renderer.insertCSSRules(resolveStaticStyleRules(styleRules));
-    }
-
-    styleCache[cacheKey] = true;
+    insertStyles(
+      options.renderer,
+      // 👇 static rules should be inserted into default bucket
+      { d: resolveStaticStyleRules(stylesSet) },
+    );
   }
 
   return useStaticStyles;

@@ -98,6 +98,30 @@ const useClasses = makeStyles({
 }
 ```
 
+### Pseudo-elements
+
+Griffel supports pseudo-elements like `::before` and `::after`.
+
+```ts
+import { makeStyles } from '@griffel/react';
+
+const useClasses = makeStyles({
+  root: {
+    '::after': {
+      content: '""', // Note the nested quotes
+    },
+  },
+});
+```
+
+:::caution
+
+When setting content on pseudo elements, make sure to use nested quotes, e.g. `content: '"hello"'`
+
+This also applies for empty content: `content: '""'`.
+
+:::
+
 ### `:global()` selector
 
 Another useful feature is `:global()` selector, it associates local styles with global selectors.
@@ -122,7 +146,7 @@ html[data-whatintent='mouse'] .f1xz3i88 {
 
 ### At-rules
 
-`@media` & `@supports` queries are also supported:
+`@media`, `@container`, `@supports` & `@layer` queries are also supported:
 
 ```js
 import { makeStyles } from '@griffel/react';
@@ -130,7 +154,10 @@ import { makeStyles } from '@griffel/react';
 const useClasses = makeStyles({
   root: {
     '@media screen and (max-width: 992px)': { color: 'orange' },
+    '@container (max-width: 992px)': { color: 'orange' },
+    '@container foo (max-width: 992px)': { color: 'orange' },
     '@supports (display: grid)': { color: 'red' },
+    '@layer utility': { marginBottom: '1em' },
   },
 });
 ```
@@ -143,9 +170,28 @@ const useClasses = makeStyles({
     color: orange;
   }
 }
+
+@container (max-width: 992px) {
+  .xx {
+    color: orange;
+  }
+}
+
+@container foo (max-width: 992px) {
+  .xx {
+    color: orange;
+  }
+}
+
 @supports (display: grid) {
   .f1ofq0jl {
     color: red;
+  }
+}
+
+@layer utility {
+  .f2d3jla {
+    margin-bottom: 1em;
   }
 }
 ```
@@ -210,6 +256,126 @@ const useClasses = makeStyles({
         to: { height: '200px' },
       },
     ],
+  },
+});
+```
+
+### Using `RESET`
+
+You can set `RESET` value to remove a property (it won't generate a CSS rule unlike `initial` or `unset`):
+
+```js
+import { makeStyles, mergeClasses, RESET } from '@griffel/react';
+
+const useClassesA = makeStyles({
+  root: {
+    color: 'red',
+    backgroundColor: 'blue',
+  },
+});
+const useClassesB = makeStyles({
+  root: {
+    color: RESET,
+  },
+});
+
+function Component() {
+  const classesA = useClassesA();
+  const classesB = useClassesB();
+
+  // 💡 After merging, the `color` property will be removed
+  const className = mergeClasses(classesA.root, classesB.root);
+
+  // 💡 If `RESET` value is set, it won't be added to the class
+  return <div className={classesA} />;
+}
+```
+
+### CSS Fallback Properties
+
+Griffel supports CSS fallback properties in order to support older browsers.
+
+Any CSS property accepts an array of values which are all added to the styles.
+Every browser will use the latest valid value (which might be a different one in different browsers, based on supported CSS in that browser):
+
+```js
+import { makeStyles } from '@griffel/react';
+
+const useClasses = makeStyles({
+  root: {
+    overflowY: ['scroll', 'overlay'],
+  },
+});
+```
+
+<OutputTitle>Produces following CSS...</OutputTitle>
+
+```css
+.f1qdoogn {
+  overflow-y: scroll; /* Fallback for browsers which do not support overflow: overlay */
+  overflow-y: overlay; /* Used by browsers which support overflow: overlay */
+}
+```
+
+### RTL support
+
+Griffel uses [rtl-css-js](https://github.com/kentcdodds/rtl-css-js) to perform automatic flipping of properties and values in Right-To-Left (RTL) text direction defined by [`TextDirectionProvider`](/react/api/text-direction-provider).
+
+```js
+import { makeStyles } from '@griffel/react';
+
+const useClasses = makeStyles({
+  root: {
+    paddingLeft: '10px',
+  },
+});
+```
+
+<OutputTitle>Produces following CSS...</OutputTitle>
+
+```css
+/* Will be applied in LTR */
+.frdkuqy {
+  padding-left: 10px;
+}
+/* Will be applied in RTL */
+.f81rol6 {
+  padding-right: 10px;
+}
+```
+
+You can also control which rules you don't want to flip by adding a `/* @noflip */` CSS comment to your rule:
+
+```js
+import { makeStyles } from '@griffel/react';
+
+const useClasses = makeStyles({
+  root: {
+    paddingLeft: '10px /* @noflip */',
+  },
+});
+```
+
+<OutputTitle>Produces following CSS...</OutputTitle>
+
+```css
+/* Will be applied in LTR & RTL */
+.f6x5cb6 {
+  padding-left: 10px;
+}
+```
+
+:::caution
+
+Values than contain CSS variables might not be always converted, for example:
+
+```js
+import { makeStyles } from '@griffel/react';
+
+const useClasses = makeStyles({
+  root: {
+    // ⚠️ "boxShadow" will not be flipped in this example
+    boxShadow: 'var(--box-shadow)',
   },
 });
 ```

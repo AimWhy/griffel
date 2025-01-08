@@ -2,14 +2,13 @@
 sidebar_position: 5
 ---
 
-# Child Window/Shadow DOM Rendering
+# Child Window rendering
 
-When rendering in the main browser window, many components will need access to window or document to apply styles, listening for events, or measuring things. However it is possible to render to child windows and elements hosted in iframes.
-
+When rendering in the main browser window, many components will need access to window or document to apply styles, listening for events, or measuring things. However it is possible to render to child windows and elements hosted in iframes. The same technique can be used to render styles in Shadow DOM.
 
 ## Configure rendering
 
-We need to configure a renderer for makeStyles() and pass a targetDocument to FluentProvider:
+We need to configure a renderer for `makeStyles()` and pass a `targetDocument` to `RendererProvider`:
 
 ```jsx
 import { createDOMRenderer, RendererProvider } from '@griffel/react';

@@ -28,6 +28,9 @@ async function compileSourceWithWebpack(entryPath: string, options: CompileOptio
       path: path.resolve(__dirname),
       filename: 'bundle.js',
     },
+    externals: {
+      '@griffel/react': 'Griffel',
+    },
 
     module: {
       rules: [
@@ -43,10 +46,6 @@ async function compileSourceWithWebpack(entryPath: string, options: CompileOptio
     },
 
     resolve: {
-      alias: {
-        '@griffel/core': path.resolve(__dirname, '..', '..', '..', 'dist', 'packages', 'react', 'index.esm.js'),
-        '@griffel/react': path.resolve(__dirname, '..', '..', '..', 'dist', 'packages', 'react', 'index.esm.js'),
-      },
       extensions: ['.js', '.ts'],
     },
   };
@@ -54,7 +53,7 @@ async function compileSourceWithWebpack(entryPath: string, options: CompileOptio
   const webpackConfig = merge(defaultConfig, options.webpackConfig || {});
   const compiler = webpack(webpackConfig);
 
-  compiler.outputFileSystem = createFsFromVolume(new Volume());
+  compiler.outputFileSystem = createFsFromVolume(new Volume()) as NonNullable<webpack.Compiler['outputFileSystem']>;
   compiler.outputFileSystem.join = path.join.bind(path);
 
   return new Promise((resolve, reject) => {
@@ -175,89 +174,107 @@ function testFixture(fixtureName: string, options: CompileOptions = {}) {
 }
 
 describe('shouldTransformSourceCode', () => {
-  it('handles defaults', () => {
-    expect(shouldTransformSourceCode(`import { makeStyles } from "@griffel/react"`, undefined)).toBe(true);
-    expect(shouldTransformSourceCode(`import { Button } from "@fluentui/react"`, undefined)).toBe(false);
+  describe('handles defaults', () => {
+    it('makeStyles', () => {
+      expect(shouldTransformSourceCode(`import { makeStyles } from "@griffel/react"`, undefined)).toBe(true);
+      expect(shouldTransformSourceCode(`import { Button } from "@fluentui/react"`, undefined)).toBe(false);
+    });
+
+    it('makeResetStyles', () => {
+      expect(shouldTransformSourceCode(`import { makeResetStyles } from "@griffel/react"`, undefined)).toBe(true);
+      expect(shouldTransformSourceCode(`import { Button } from "@fluentui/react"`, undefined)).toBe(false);
+    });
   });
 
-  it('handles options', () => {
-    expect(
-      shouldTransformSourceCode(`import { makeStyles } from "@griffel/react"`, [
-        { moduleSource: '@griffel/react', importName: 'makeStyles' },
-      ]),
-    ).toBe(true);
-    expect(
-      shouldTransformSourceCode(`import { createStyles } from "make-styles"`, [
-        { moduleSource: 'make-styles', importName: 'createStyles' },
-      ]),
-    ).toBe(true);
+  describe('handles options', () => {
+    it('makeStyles', () => {
+      expect(
+        shouldTransformSourceCode(`import { makeStyles } from "@griffel/react"`, [
+          { moduleSource: '@griffel/react', importName: 'makeStyles' },
+        ]),
+      ).toBe(true);
+      expect(
+        shouldTransformSourceCode(`import { createStyles } from "make-styles"`, [
+          { moduleSource: 'make-styles', importName: 'createStyles' },
+        ]),
+      ).toBe(true);
 
-    expect(
-      shouldTransformSourceCode(`import { Button } from "@fluentui/react"`, [
-        { moduleSource: '@griffel/react', importName: 'makeStyles' },
-      ]),
-    ).toBe(false);
+      expect(
+        shouldTransformSourceCode(`import { Button } from "@fluentui/react"`, [
+          { moduleSource: '@griffel/react', importName: 'makeStyles' },
+        ]),
+      ).toBe(false);
+    });
+
+    it('makeResetStyles', () => {
+      expect(
+        shouldTransformSourceCode(`import { makeResetStyles } from "@griffel/react"`, [
+          { moduleSource: '@griffel/react', importName: 'makeStyles', resetImportName: 'makeResetStyles' },
+        ]),
+      ).toBe(true);
+      expect(
+        shouldTransformSourceCode(`import { createResetStyles } from "make-styles"`, [
+          { moduleSource: 'make-styles', importName: 'makeStyles', resetImportName: 'createResetStyles' },
+        ]),
+      ).toBe(true);
+
+      expect(
+        shouldTransformSourceCode(`import { Button } from "@fluentui/react"`, [
+          { moduleSource: '@griffel/react', importName: 'makeStyles', resetImportName: 'makeResetStyles' },
+        ]),
+      ).toBe(false);
+    });
   });
 });
 
 describe('webpackLoader', () => {
-  // Integration fixtures for base functionality, all scenarios are tested in "babel-make-styles"
+  // Integration fixtures for base functionality, all scenarios are tested in "@griffel/babel-preset"
   testFixture('object');
   testFixture('function');
+  testFixture('reset');
+  testFixture('empty');
 
-  // Integration fixtures for config functionality
-  testFixture('config-modules', {
-    loaderOptions: {
-      modules: [{ moduleSource: 'react-make-styles', importName: 'makeStyles' }],
-    },
-    webpackConfig: {
-      resolve: {
-        alias: {
-          'react-make-styles': '@griffel/react',
-        },
-      },
-    },
-  });
+  const fakeColorModulePath = path.resolve(__dirname, '..', '__fixtures__', 'webpack-resolve-plugins', 'fake-color.ts');
+  const colorModulePath = path.resolve(__dirname, '..', '__fixtures__', 'webpack-resolve-plugins', 'color.ts');
 
-  // Asserts that aliases are resolved properly in Babel plugin
-  testFixture('webpack-aliases', {
-    webpackConfig: {
-      resolve: {
-        alias: {
-          'non-existing-color-module': path.resolve(__dirname, '..', '__fixtures__', 'webpack-aliases', 'color.ts'),
-        },
-      },
-    },
-  });
+  const CustomAliasPlugin: webpack.ResolvePluginInstance = {
+    // Simple plugin that will detect the non-existent module we are testing for and replace with
+    // correct path from the fixture
+    apply(resolver) {
+      const target = resolver.ensureHook('internal-resolve');
 
-  // Asserts that aliases are resolved properly in Babel plugin with resolve plugins
+      resolver.getHook('raw-resolve').tapAsync('CustomAliasPlugin', (request, resolveContext, callback) => {
+        if (request.request === 'non-existing-color-module') {
+          const newRequest = { ...request, request: colorModulePath };
+
+          return resolver.doResolve(target, newRequest, null, resolveContext, callback);
+        }
+
+        callback();
+      });
+    },
+  };
+
   testFixture('webpack-resolve-plugins', {
     webpackConfig: {
       resolve: {
-        plugins: [
-          {
-            // Simple plugin that will detect the non-existent module we are testing for and replace with
-            // correct path from the fixture
-            apply: function (resolver) {
-              const target = resolver.ensureHook('resolve');
-
-              resolver.getHook('before-resolve').tapAsync('ResolveFallback', (request, resolveContext, callback) => {
-                if (request.request === 'non-existing-color-module') {
-                  const obj = {
-                    directory: request.directory,
-                    path: request.path,
-                    query: request.query,
-                    request: path.resolve(__dirname, '..', '__fixtures__', 'webpack-resolve-plugins', 'color.ts'),
-                  };
-                  return resolver.doResolve(target, obj, null, resolveContext, callback);
-                }
-
-                callback();
-              });
-            },
-          },
-        ],
+        alias: {
+          'non-existing-color-module': fakeColorModulePath,
+        },
+        plugins: [CustomAliasPlugin],
       },
+    },
+  });
+  testFixture('webpack-resolve-plugins', {
+    webpackConfig: {
+      resolve: {
+        alias: {
+          'non-existing-color-module': fakeColorModulePath,
+        },
+      },
+    },
+    loaderOptions: {
+      webpackResolveOptions: { plugins: [CustomAliasPlugin] },
     },
   });
 

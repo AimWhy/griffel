@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses, TextDirectionProvider } from '@griffel/react';
+import { RESET, makeResetStyles, makeStyles, mergeClasses, TextDirectionProvider } from '@griffel/react';
 import { render } from '@testing-library/react';
 
 import { print, test } from './index';
@@ -7,7 +7,7 @@ import { print, test } from './index';
 expect.addSnapshotSerializer({ print, test });
 
 const useStyles1 = makeStyles({
-  root: { color: 'var(--colorNeutralForeground1)' },
+  root: { color: 'var(--colorNeutralForeground1)', backgroundColor: RESET },
   paddingLeft: { paddingLeft: '10px' },
 });
 
@@ -19,41 +19,166 @@ const useStyles3 = makeStyles({
   display: { display: 'none' },
 });
 
+const useResetStylesA = makeResetStyles({
+  color: 'red',
+  marginLeft: '20px',
+});
+const useResetStylesB = makeResetStyles({
+  color: 'blue',
+});
+
 const TestComponent: React.FC<{ id?: string }> = ({ id }) => {
   const styles1 = useStyles1();
   const styles2 = useStyles2();
   const styles3 = useStyles3();
-  const styles = mergeClasses('static-class', styles1.root, styles1.paddingLeft, styles2.paddingRight, styles3.display);
+  const styles = mergeClasses(
+    'class-a',
+    styles1.root,
+    styles1.paddingLeft,
+    styles2.paddingRight,
+    styles3.display,
+    'class-b',
+  );
 
-  return <div data-testid={id} className={styles} />;
+  return <div data-testid={id} className={styles} data-test-attr="true" />;
 };
 
-const RtlWrapper: React.FC = ({ children }) => <TextDirectionProvider dir="rtl">{children}</TextDirectionProvider>;
+const TestResetComponent: React.FC<{ id?: string; children?: React.ReactNode }> = ({ id, children }) => {
+  const classes = useStyles1();
+  const resetClassNameA = useResetStylesA();
+  const resetClassNameB = useResetStylesB();
 
-describe('jest-serializer-make-styles', () => {
+  const rootClassName = mergeClasses('class-reset-a', resetClassNameA, classes.paddingLeft, 'class-reset-b');
+  const innerClassName = mergeClasses('class-reset-inner', resetClassNameB);
+
+  return (
+    <div data-testid={id} className={rootClassName}>
+      <div className={innerClassName}>{children}</div>
+    </div>
+  );
+};
+
+const RtlWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <TextDirectionProvider dir="rtl">{children}</TextDirectionProvider>
+);
+
+describe('serializer', () => {
   it('should check styles', () => {
     expect(render(<TestComponent id="test" />).getByTestId('test')).toHaveStyle({
       display: 'none',
       paddingLeft: '10px',
       paddingRight: '20px',
     });
+    expect(render(<TestResetComponent id="reset-test" />).getByTestId('reset-test')).toHaveStyle({
+      color: 'red',
+      paddingLeft: '10px',
+      marginLeft: '20px',
+    });
+
     expect(render(<TestComponent id="rtl-test" />, { wrapper: RtlWrapper }).getByTestId('rtl-test')).toHaveStyle({
       display: 'none',
       paddingLeft: '20px',
       paddingRight: '10px',
     });
+    expect(
+      render(<TestResetComponent id="rtl-reset-test" />, { wrapper: RtlWrapper }).getByTestId('rtl-reset-test'),
+    ).toHaveStyle({
+      color: 'red',
+      paddingRight: '10px',
+      marginRight: '20px',
+    });
   });
 
-  it('renders without generated classes', () => {
+  // Note: When HTML element is passed we will get a string with classes, not the whole snippet
+  it('handles classes strings', () => {
     expect(render(<TestComponent />).container.firstChild).toMatchInlineSnapshot(`
       <div
-        class="static-class"
+        class="class-a class-b"
+        data-test-attr="true"
       />
     `);
+    expect(render(<TestResetComponent />).container.firstChild).toMatchInlineSnapshot(`
+      <div
+        class="class-reset-a class-reset-b"
+      >
+        <div
+          class="class-reset-inner"
+        />
+      </div>
+    `);
+
     expect(render(<TestComponent />, { wrapper: RtlWrapper }).container.firstChild).toMatchInlineSnapshot(`
       <div
-        class="static-class"
+        class="class-a class-b"
+        data-test-attr="true"
       />
+    `);
+    expect(render(<TestResetComponent />, { wrapper: RtlWrapper }).container.firstChild).toMatchInlineSnapshot(`
+      <div
+        class="class-reset-a class-reset-b"
+      >
+        <div
+          class="class-reset-inner"
+        />
+      </div>
+    `);
+
+    expect(render(<div className="foo bar" />).container.firstChild).toMatchInlineSnapshot(`
+      <div
+        class="foo bar"
+      />
+    `);
+  });
+
+  it('handles HTML strings', () => {
+    expect(render(<TestResetComponent />).container.innerHTML).toMatchInlineSnapshot(
+      `"<div class="class-reset-a class-reset-b"><div class="class-reset-inner"></div></div>"`,
+    );
+    expect(render(<TestComponent />).container.innerHTML).toMatchInlineSnapshot(
+      `"<div class="class-a class-b" data-test-attr="true"></div>"`,
+    );
+  });
+
+  it('handles nested elements', () => {
+    expect(
+      render(
+        <TestResetComponent>
+          <TestComponent />
+        </TestResetComponent>,
+      ).container.firstChild,
+    ).toMatchInlineSnapshot(`
+      <div
+        class="class-reset-a class-reset-b"
+      >
+        <div
+          class="class-reset-inner"
+        >
+          <div
+            class="class-a class-b"
+            data-test-attr="true"
+          />
+        </div>
+      </div>
+    `);
+
+    expect(
+      render(
+        <TestResetComponent>
+          <TestComponent />
+        </TestResetComponent>,
+      ).container.innerHTML,
+    ).toMatchInlineSnapshot(
+      `"<div class="class-reset-a class-reset-b"><div class="class-reset-inner"><div class="class-a class-b" data-test-attr="true"></div></div></div>"`,
+    );
+  });
+
+  it('does not assert on non-sequence strings', () => {
+    expect({
+      toString: () => 'class="foo"',
+    }).toMatchInlineSnapshot(`
+      Object {
+        "toString": [Function],
+      }
     `);
   });
 });

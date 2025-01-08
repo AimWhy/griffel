@@ -1,5 +1,6 @@
 import * as Babel from '@babel/core';
-import griffelPreset, { BabelPluginOptions } from '@griffel/babel-preset';
+import type { BabelPluginOptions } from '@griffel/babel-preset';
+import griffelPreset from '@griffel/babel-preset';
 
 export type TransformOptions = {
   filename: string;
@@ -22,7 +23,7 @@ export function transformSync(sourceCode: string, options: TransformOptions): Tr
   // Parse the code first so Babel will use user's babel config for parsing
   // During transforms we don't want to use user's config
   const babelAST = Babel.parseSync(sourceCode, {
-    caller: { name: 'make-styles' },
+    caller: { name: 'griffel' },
 
     filename: options.filename,
     inputSourceMap: options.inputSourceMap,

@@ -1,22 +1,13 @@
 import { makeStyles as vanillaMakeStyles } from '@griffel/core';
-import * as React from 'react';
 import type { GriffelStyle } from '@griffel/core';
 
+import { insertionFactory } from './insertionFactory';
 import { useRenderer } from './RendererContext';
 import { useTextDirection } from './TextDirectionContext';
-
-function isInsideComponent() {
-  try {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    React.useContext({} as unknown as React.Context<unknown>);
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
+import { isInsideComponent } from './utils/isInsideComponent';
 
 export function makeStyles<Slots extends string | number>(stylesBySlots: Record<Slots, GriffelStyle>) {
-  const getStyles = vanillaMakeStyles(stylesBySlots);
+  const getStyles = vanillaMakeStyles(stylesBySlots, insertionFactory);
 
   if (process.env.NODE_ENV !== 'production') {
     if (isInsideComponent()) {

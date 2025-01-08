@@ -25,8 +25,8 @@ export const useStyles = __styles(
   },
   {
     d: [
-      '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}',
-      '.f1vx9l62{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}',
+      '.f22iagw{display:flex;}',
+      '.f1vx9l62{flex-direction:column;}',
       '.figsok6{font-weight:var(--fontWeightRegular);}',
       '.f16wzh4i{font-weight:bold;}',
       '.fe3e8s9{color:red;}',

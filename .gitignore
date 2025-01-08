@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+/packages/*/dist/bundle-size
 
 # dependencies
 .yarn/*
@@ -26,6 +27,7 @@ node_modules
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+*.code-workspace
 
 # misc
 .docusaurus
@@ -41,3 +43,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+.nx/cache
+.nx/workspace-data

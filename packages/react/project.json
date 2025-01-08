@@ -1,20 +1,24 @@
 {
-  "root": "packages/react",
+  "name": "@griffel/react",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/react/src",
   "projectType": "library",
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/web:rollup",
+      "executor": "@nx/rollup:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "buildableProjectDepsInPackageJsonType": "dependencies",
         "outputPath": "dist/packages/react",
         "tsConfig": "packages/react/tsconfig.lib.json",
+        "skipTypeField": true,
+        "skipTypeCheck": true,
         "project": "packages/react/package.json",
         "entryFile": "packages/react/src/index.ts",
         "compiler": "babel",
-        "rollupConfig": ["@nrwl/react/plugins/bundle-rollup", "tools/getRollupOptions.js"],
+        "sourceMap": true,
+        "rollupConfig": ["@nx/react/plugins/bundle-rollup", "tools/getRollupOptions.js"],
+        "external": ["tslib"],
         "format": ["esm", "cjs"],
         "assets": [
           {
@@ -31,45 +35,35 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["packages/react/**/*.{ts,tsx,js,jsx}"]
-      }
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/react"],
-      "options": {
-        "jestConfig": "packages/react/jest.config.js",
-        "passWithNoTests": true
-      }
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/react"],
+      "options": { "jestConfig": "packages/react/jest.config.ts" }
     },
     "bundle-size": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "dependsOn": [
         {
-          "target": "build",
-          "projects": "self"
+          "target": "build"
         }
       ],
       "options": {
         "cwd": "packages/react",
         "commands": [
           {
-            "command": "bundle-size measure"
+            "command": "monosize measure"
           }
         ]
       }
     },
     "storybook": {
-      "executor": "@nrwl/storybook:storybook",
+      "executor": "@nx/storybook:storybook",
       "options": {
-        "uiFramework": "@storybook/react",
         "port": 4400,
-        "config": {
-          "configFolder": "packages/react/.storybook"
-        }
+        "configDir": "packages/react/.storybook"
       },
       "configurations": {
         "ci": {
@@ -78,14 +72,11 @@
       }
     },
     "build-storybook": {
-      "executor": "@nrwl/storybook:build",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@nx/storybook:build",
+      "outputs": ["{options.outputDir}"],
       "options": {
-        "uiFramework": "@storybook/react",
-        "outputPath": "dist/storybook/@griffel/react",
-        "config": {
-          "configFolder": "packages/react/.storybook"
-        }
+        "configDir": "packages/react/.storybook",
+        "outputDir": "dist/storybook/@griffel/react"
       },
       "configurations": {
         "ci": {
@@ -94,12 +85,16 @@
       }
     },
     "type-check": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/react",
-        "commands": [{ "command": "tsc -b --pretty" }],
-        "outputPath": []
-      }
+        "commands": [
+          {
+            "command": "tsc -b --pretty"
+          }
+        ]
+      },
+      "outputs": []
     }
   }
 }

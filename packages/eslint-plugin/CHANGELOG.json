@@ -1,0 +1,317 @@
+{
+  "name": "@griffel/eslint-plugin",
+  "entries": [
+    {
+      "date": "Wed, 13 Nov 2024 15:01:37 GMT",
+      "tag": "@griffel/eslint-plugin_v2.0.0",
+      "version": "2.0.0",
+      "comments": {
+        "major": [
+          {
+            "author": "suryamalladi@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "629d59ae42b173b720c624e97b479f0b22dcf744",
+            "comment": "feat: Add no-deprecated-shorthands rule"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 31 Oct 2024 16:16:50 GMT",
+      "tag": "@griffel/eslint-plugin_v1.7.0",
+      "version": "1.7.0",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "291da5fea61bd08be595df1cdce171b755612898",
+            "comment": "chore: bump Nx to 19.8.6"
+          },
+          {
+            "author": "tigeroakes@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "bdb268b47461714203d420a6761454775d8a6bf3",
+            "comment": "docs: update README"
+          }
+        ],
+        "minor": [
+          {
+            "author": "ben.keen@gmail.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "e729a723be10b63c566ce764738d4ba60f51e2e4",
+            "comment": "feat: add top-level-styles eslint rule"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Jul 2024 14:36:29 GMT",
+      "tag": "@griffel/eslint-plugin_v1.6.4",
+      "version": "1.6.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "c20560331a66071494a207a4b36ebc93fdcf6406",
+            "comment": "chore: bump @typescript-eslint/utils"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 May 2024 08:24:17 GMT",
+      "tag": "@griffel/eslint-plugin_v1.6.3",
+      "version": "1.6.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "6ae570dbbd711a5e95184004f5d4d98a8ffa2df3",
+            "comment": "fix(eslint-plugin): update the list of unsupported shorthands"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Mar 2024 15:27:35 GMT",
+      "tag": "@griffel/eslint-plugin_v1.6.2",
+      "version": "1.6.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "a8f219aff658a24a43fa5e2d20d7d06c9045574d",
+            "comment": "fix: update export in @griffel/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Mar 2024 15:08:56 GMT",
+      "tag": "@griffel/eslint-plugin_v1.6.1",
+      "version": "1.6.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "eceeb13c2dc0d76a1c2c6eafc1c26f9283ec0384",
+            "comment": "fix: build @griffel/eslint-plugin as CJS"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Feb 2024 09:33:35 GMT",
+      "tag": "@griffel/eslint-plugin_v1.6.0",
+      "version": "1.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tigeroakes@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "bd2fb28c785c45cb112c440c1ddd02431293bc2f",
+            "comment": "Add linter rule for invalid shorthand arguments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jan 2024 11:03:15 GMT",
+      "tag": "@griffel/eslint-plugin_v1.5.2",
+      "version": "1.5.2",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "9c0b1acf69a4645331d1623b1f0b5484ce5d2cc9",
+            "comment": "chore: bump to Nx@15.9.7"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "1a226dc4d52466d55e234e6ee7c4977845d8944b",
+            "comment": "chore: bump to Nx@16.10.0"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "cb5a11705b70fb2bf0aa2dc71412177062a2d7e3",
+            "comment": "chore: bump @typescript-eslint/utils"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Jan 2024 11:08:40 GMT",
+      "tag": "@griffel/eslint-plugin_v1.5.1",
+      "version": "1.5.1",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "1594e428f0902da615ff8d9e86ae4512ce9f0389",
+            "comment": "chore: enable \"@typescript-eslint/consistent-type-imports\" lint rule"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "adf1a0d691656d5aea75c57d65939bb16d3368c8",
+            "comment": "chore: bump csstype"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Oct 2023 19:09:32 GMT",
+      "tag": "@griffel/eslint-plugin_v1.5.0",
+      "version": "1.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tigeroakes@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "1476e34bd093df1132181acfebbb8c51922d5c8b",
+            "comment": "feat: update all rules to lint makeResetStyles and makeStaticStyles"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "49c1a7cd276b62bd4a6237604c21dee87d567dd3",
+            "comment": "chore: remove unstable-css-lint rule"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Sep 2023 08:08:42 GMT",
+      "tag": "@griffel/eslint-plugin_v1.4.0",
+      "version": "1.4.0",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "b7433557968cd03e7fdd8d23439646c81e613d92",
+            "comment": "feat(eslint-plugin): Adds WIP rule for css linting"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "5fdc049120a7426864edc46b1b73c91cec0ba060",
+            "comment": "feat: integrate stylelint to css-lint rule"
+          },
+          {
+            "author": "beachball",
+            "package": "@griffel/eslint-plugin",
+            "comment": "Bump @griffel/babel-preset to v1.5.1",
+            "commit": "744403e2d046701dc82b02460a60e1680bb60f2e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Aug 2023 14:51:57 GMT",
+      "tag": "@griffel/eslint-plugin_v1.3.0",
+      "version": "1.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tigeroakes@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "4174c313278b36d2b9b73eee8698c94f1fc76ccc",
+            "comment": "Add autofix for no-shorthands"
+          },
+          {
+            "author": "levin@uncu.de",
+            "package": "@griffel/eslint-plugin",
+            "commit": "df9f3452d1ef0e7c78af41f8d27332b0bddf00f2",
+            "comment": "feat: add pseudo element naming rule"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Apr 2023 07:58:49 GMT",
+      "tag": "@griffel/eslint-plugin_v1.2.0",
+      "version": "1.2.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "ff7edd54e829fbeb5453383fe6a19009e44b64b2",
+            "comment": "chore: bump csstype & add new properties to no-shorthands rule"
+          }
+        ],
+        "minor": [
+          {
+            "author": "1581488+christiango@users.noreply.github.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "02dff6b0ae8093ee869514c840a2ac8123736475",
+            "comment": "Added a styles-file rule for enforcing makeStyles call be only made in files that end in .styles.ts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Mar 2023 14:51:11 GMT",
+      "tag": "@griffel/eslint-plugin_v1.1.0",
+      "version": "1.1.0",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "d8e62d7756c8bd3908e2ce5a95ee0a842fc7df9d",
+            "comment": "chore: bump Nx"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Jan 2023 13:35:21 GMT",
+      "tag": "@griffel/eslint-plugin_v1.1.0",
+      "version": "1.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tigeroakes@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "da6d2cc4d94b1ca4ccb7cb041bad8e3844f2186f",
+            "comment": "feat: Add linter rule to enforce hook naming pattern"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 May 2022 16:15:22 GMT",
+      "tag": "@griffel/eslint-plugin_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "major": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/eslint-plugin",
+            "commit": "2d46633c5a0db31f55fd20c5bce653855ce7b75b",
+            "comment": "initial release"
+          }
+        ]
+      }
+    }
+  ]
+}
