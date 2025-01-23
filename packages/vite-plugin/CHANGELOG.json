@@ -1,0 +1,58 @@
+{
+  "name": "@griffel/vite-plugin",
+  "entries": [
+    {
+      "date": "Wed, 08 Jan 2025 10:03:24 GMT",
+      "tag": "@griffel/vite-plugin_v0.1.10",
+      "version": "0.1.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/vite-plugin",
+            "commit": "e0e7fea324484258808a044061bbee6919ad744d",
+            "comment": "chore: bump @wyw-in-js/vite"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Feb 2024 10:32:16 GMT",
+      "tag": "@griffel/vite-plugin_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/vite-plugin",
+            "commit": "de8ca05b78028c7f434658dcee5d6c45a81134fd",
+            "comment": "fix: bundle ESM instead of CJS"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jan 2024 11:03:15 GMT",
+      "tag": "@griffel/vite-plugin_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/vite-plugin",
+            "commit": "3d8d4f3ff2c4af4425952fda2d52d483e042630a",
+            "comment": "chore: initial release"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/vite-plugin",
+            "commit": "c0b189809ce3245549257cee7e12b0d4eda726f5",
+            "comment": "chore: add tests for Vite plugin"
+          }
+        ]
+      }
+    }
+  ]
+}

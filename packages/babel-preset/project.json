@@ -1,30 +1,27 @@
 {
-  "root": "packages/babel-preset",
+  "name": "@griffel/babel-preset",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/babel-preset/src",
   "projectType": "library",
-  "implicitDependencies": ["!@griffel/react"],
   "targets": {
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["packages/babel-preset/**/*.ts"]
-      }
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/babel-preset"],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/babel-preset"],
       "options": {
-        "jestConfig": "packages/babel-preset/jest.config.js",
-        "passWithNoTests": true
+        "jestConfig": "packages/babel-preset/jest.config.ts"
       }
     },
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/babel-preset",
         "tsConfig": "packages/babel-preset/tsconfig.lib.json",
+        "skipTypeField": true,
         "packageJson": "packages/babel-preset/package.json",
         "main": "packages/babel-preset/src/index.ts",
         "assets": [
@@ -38,12 +35,12 @@
       }
     },
     "type-check": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/babel-preset",
-        "commands": [{ "command": "tsc -b --pretty" }],
-        "outputPath": []
-      }
+        "commands": [{ "command": "tsc -b --pretty" }]
+      },
+      "outputs": []
     }
   },
   "tags": []

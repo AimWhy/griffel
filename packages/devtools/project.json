@@ -1,0 +1,130 @@
+{
+  "name": "@griffel/devtools",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/devtools/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/packages/devtools",
+        "index": "packages/devtools/src/index.html",
+        "main": "packages/devtools/src/index.tsx",
+        "tsConfig": "packages/devtools/tsconfig.lib.json",
+        "skipTypeField": true,
+        "packageJson": "packages/devtools/package.json",
+        "assets": [
+          {
+            "glob": "packages/devtools/public",
+            "input": ".",
+            "output": "."
+          },
+          {
+            "glob": "packages/devtools/package.json",
+            "input": ".",
+            "output": "."
+          },
+          {
+            "glob": "LICENSE.md",
+            "input": ".",
+            "output": "."
+          }
+        ],
+        "webpackConfig": "packages/devtools/webpack.config.js"
+      },
+      "configurations": {
+        "production": {
+          "buildLibsFromSource": false,
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "runtimeChunk": false,
+          "vendorChunk": false
+        },
+        "development": {}
+      }
+    },
+    "pack-extension": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        {
+          "target": "build"
+        }
+      ],
+      "options": {
+        "commands": [
+          {
+            "command": "node ./pack-extension.js"
+          }
+        ],
+        "cwd": "packages/devtools/"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/devtools"],
+      "options": {
+        "jestConfig": "packages/devtools/jest.config.ts"
+      }
+    },
+    "type-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/devtools",
+        "commands": [
+          {
+            "command": "tsc -b --pretty"
+          }
+        ]
+      },
+      "outputs": []
+    },
+    "watch": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": ".",
+        "parallel": false,
+        "commands": [
+          {
+            "command": " nx build @griffel/devtools --skip-nx-cache --configuration=development --watch"
+          }
+        ]
+      }
+    },
+    "storybook": {
+      "executor": "@nx/storybook:storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "packages/devtools/.storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@nx/storybook:build",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "configDir": "packages/devtools/.storybook",
+        "outputDir": "dist/storybook/@griffel/devtools"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    }
+  }
+}

@@ -2,12 +2,31 @@
 
 A Babel preset that performs build time transforms for [`@griffel/react`](../react).
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Install](#install)
+- [Usage](#usage)
+  - [Importing Griffel from custom packages](#importing-griffel-from-custom-packages)
+  - [Configuring Babel settings](#configuring-babel-settings)
+  - [Configuring module evaluation](#configuring-module-evaluation)
+- [Transforms](#transforms)
+- [Example](#example)
+- [Access CSS output from code](#access-css-output-from-code)
+- [Troubleshooting](#troubleshooting)
+  - [Module evaluation](#module-evaluation)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+> [!CAUTION]
+> We don't recommend to use this preset directly, it's intended to be used by other tools like [webpack loader](../webpack-loader) or [Vite plugin](../vite-plugin).
+
 ## Install
 
 ```bash
 yarn add --dev @griffel/babel-preset
 # or
-npm install --dev @griffel/babel-preset
+npm install --save-dev @griffel/babel-preset
 ```
 
 ## Usage
@@ -28,13 +47,13 @@ import { makeStyles } from 'custom-package';
 import { createStyles } from 'custom-package';
 ```
 
-By default, preset handles imports from `@griffel/react`, to handle imports from custom packages settings should be tweaked:
+By default, preset handles imports from `@griffel/react` & `@fluentui/react-components`, to handle imports from custom packages settings should be tweaked:
 
 ```json
 {
   "presets": [
     [
-      "@griffel/babel",
+      "@griffel",
       {
         "modules": [{ "moduleSource": "custom-package", "importName": "makeStyles" }]
       }
@@ -53,7 +72,7 @@ If you need to specify custom Babel configuration, you can pass them to `babelOp
 {
   "presets": [
     [
-      "@griffel/babel",
+      "@griffel",
       {
         "babelOptions": {
           "plugins": ["@babel/plugin-proposal-class-static-block"],
@@ -71,7 +90,7 @@ If you need to specify custom Babel configuration, you can pass them to `babelOp
 {
   "presets": [
     [
-      "@griffel/babel",
+      "@griffel",
       {
         "evaluationRules": []
       }
@@ -97,11 +116,11 @@ The default setup is:
 module.exports = {
   presets: [
     [
-      '@griffel/babel',
+      '@griffel',
       {
         evaluationRules: [
           {
-            action: require('@linaria/shaker').default,
+            action: require('@griffel/babel-preset').shakerEvaluator,
           },
           {
             test: /[/\\]node_modules[/\\]/,
@@ -116,7 +135,7 @@ module.exports = {
 
 ## Transforms
 
-This preset is designed to perform build time transforms for `@griffel/react`, it supports both ES modules and CommonJS thus can be used in post processing after TypeScript, for example.
+This preset is designed to perform build time transforms for `@griffel/react`, it supports both ES modules and CommonJS, thus can be used in post-processing after TypeScript, for example.
 
 Transforms applied by this preset allow stripping runtime part of `makeStyles()` and improve performance.
 
@@ -140,42 +159,79 @@ import { __styles } from '@griffel/react';
 const useStyles = __styles(/* resolved styles */);
 ```
 
+## Access CSS output from code
+
+It's possible to configure the preset to return all the evaluated styles of a file. This
+metadata looks something like below:
+
+```ts
+const output = {
+  // makeStyles
+  cssEntries: {
+    // by each hook
+    useStyles1: {
+      // by each slot
+      root: [".fxxxxx { color: 'red' }"],
+    },
+    useStyles2: {
+      root: [".fxxxxx { color: 'red' }"],
+    },
+  },
+  // makeResetStyles
+  cssResetEntries: {
+    // by each hook
+    useResetStyles1: [".fxxxxx { color: 'red' }"],
+    useResetStyles2: [".fxxxxx { color: 'red' }"],
+  },
+};
+```
+
+This is intended for programmatic transforms in code so that they can be reused by other tooling without extra steps to determine
+the output styles
+
+```ts
+import { griffelPreset, BabelPluginMetadata } from '@griffel/babel-preset';
+
+const babelFileResult = Babel.transformFromAstSync(babelAST, sourceCode, {
+  babelrc: false,
+  configFile: false,
+  presets: [[griffelPreset, { generateMetadata: true }]],
+
+  filename: options.filename,
+
+  sourceMaps: options.enableSourceMaps,
+  sourceFileName: options.filename,
+  inputSourceMap: options.inputSourceMap,
+});
+
+// metadata
+console.log(babelFileResult.metadata as unknown as BabelPluginMetadata);
+```
+
 ## Troubleshooting
 
 This section focuses mainly on troubleshooting this babel preset in the [microsoft/fluentui](https://github.com/microsoft/fluentui) repo.
 However, the concepts are not coupled to the repo setup.
 
-### Linaria
+### Module evaluation
 
 The preset uses tools from [linaria](https://github.com/callstack/linaria) to evaluate runtime calls of `makeStyles`.
-[Linaria's debugging documentation can help here](https://github.com/callstack/linaria/blob/master/CONTRIBUTING.md#debugging-and-deep-dive-into-babel-plugin). Here are a few examples with building packages with linaria debug output.
+[Linaria's debugging documentation can help here](https://github.com/callstack/linaria/blob/master/CONTRIBUTING.md#debugging-and-deep-dive-into-babel-plugin).
 
-Directly from the package
+Debugging output can be activated with following environment variables:
 
 ```sh
 $ DEBUG=linaria\* LINARIA_LOG=debug yarn build
 ```
 
-Using Lage from the root of the repo
-
-```sh
-$ DEBUG=linaria\* LINARIA_LOG=debug yarn lage build --to <package-name>
-```
-
-Using `yarn workspace` from the root of the repo
-
-```sh
-$ DEBUG=linaria\* LINARIA_LOG=debug yarn workspace <package-name> build
-```
-
 On Windows it's required to set environment variables via [`set`](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/set_1) or you can use `cross-env`, for example:
 
 ```sh
-$ yarn cross-env DEBUG=linaria\* LINARIA_LOG=debug yarn workspace <package-name> build
+$ cross-env DEBUG=linaria\* LINARIA_LOG=debug yarn build
 ```
 
 The debug output will include:
 
-- Transformed code
+- Prepared code
 - Evaluated code
 - AST that indicates what code has been shaken with `@linaria/shaker`

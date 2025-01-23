@@ -1,11 +1,20 @@
-import { createDOMRenderer } from '@griffel/core';
+import { createDOMRenderer, mergeClasses } from '@griffel/core';
 import * as React from 'react';
-import { hydrate } from 'react-dom';
+import { hydrateRoot } from 'react-dom/client';
 import { renderToStaticMarkup } from 'react-dom/server';
+import { act } from 'react-dom/test-utils';
 
 import { makeStyles } from './makeStyles';
+import { makeResetStyles } from './makeResetStyles';
 import { RendererProvider } from './RendererContext';
 import { renderToStyleElements } from './renderToStyleElements';
+import { useInsertionEffect as _useInsertionEffect } from './useInsertionEffect';
+
+jest.mock('./useInsertionEffect', () => ({
+  useInsertionEffect: jest.fn(),
+}));
+
+const useInsertionEffect = _useInsertionEffect as jest.MockedFunction<typeof React.useInsertionEffect>;
 
 describe('createDOMRenderer', () => {
   it('rehydrateCache() avoids double insertion', () => {
@@ -13,11 +22,11 @@ describe('createDOMRenderer', () => {
 
     const clientRenderer = createDOMRenderer(document);
     const serverRenderer = createDOMRenderer(
-      // we should use "null" as "undefined" will fallback to "document" which is present in this environment
+      // we should use "null" as "undefined" will fall back to "document" which is present in this environment
       null as unknown as undefined,
     );
 
-    const useExampleStyles = makeStyles({
+    const useExampleClasses = makeStyles({
       root: {
         animationName: {
           from: { height: '10px' },
@@ -28,16 +37,26 @@ describe('createDOMRenderer', () => {
         '@media screen and (max-width: 992px)': { ':hover': { color: 'blue' } },
       },
     });
+    const useExampleClass = makeResetStyles({
+      color: 'red',
+      ':hover': { color: 'blue' },
+    });
     const ExampleComponent: React.FC = () => {
-      const classes = useExampleStyles();
+      const classes = useExampleClasses();
+      const className = useExampleClass();
 
-      return <div className={classes.root} />;
+      return <div className={mergeClasses(className, classes.root)} />;
     };
 
     //
     // Server
     // A "server" renders components to static HTML that will be transferred to a client
     //
+
+    // Heads up!
+    // Mock there is need as this test is executed in DOM environment and uses "useInsertionEffect".
+    // However, "useInsertionEffect" will not be called in "renderToStaticMarkup()".
+    useInsertionEffect.mockImplementation(fn => fn());
 
     const componentHTML = renderToStaticMarkup(
       <RendererProvider renderer={serverRenderer}>
@@ -46,6 +65,19 @@ describe('createDOMRenderer', () => {
     );
     const stylesHTML = renderToStaticMarkup(<>{renderToStyleElements(serverRenderer)}</>);
 
+    useInsertionEffect.mockImplementation(React.useInsertionEffect);
+
+    // Ensure that all styles are inserted into the cache
+    expect(serverRenderer.insertionCache).toMatchInlineSnapshot(`
+      Object {
+        ".f1p9cr64{animation-name:f1kgwxhb;}": "d",
+        ".fe3e8s9{color:red;}": "d",
+        ".rp2atum:hover{color:blue;}": "r",
+        ".rp2atum{color:red;}": "r",
+        "@keyframes f1kgwxhb{from{height:10px;}to{height:20px;}}": "k",
+        "@media screen and (max-width: 992px){.fzd6x39:hover{color:blue;}}": "m",
+      }
+    `);
     // There is no DOM on a server, style nodes should not be present
     expect(document.querySelector('style')).toBe(null);
 
@@ -55,6 +87,7 @@ describe('createDOMRenderer', () => {
     //
 
     const container = document.createElement('div');
+
     document.body.appendChild(container);
 
     container.innerHTML = componentHTML;
@@ -67,13 +100,15 @@ describe('createDOMRenderer', () => {
       jest.spyOn(styleEl.sheet!, 'insertRule'),
     );
 
-    hydrate(
-      // "RendererProvider" is not required there, we need it only for Jest spies
-      <RendererProvider renderer={clientRenderer}>
-        <ExampleComponent />
-      </RendererProvider>,
-      container,
-    );
+    act(() => {
+      hydrateRoot(
+        container,
+        // "RendererProvider" is not required there, we need it only for Jest spies
+        <RendererProvider renderer={clientRenderer}>
+          <ExampleComponent />
+        </RendererProvider>,
+      );
+    });
 
     const styleElementsAfterHydration = document.querySelectorAll<HTMLStyleElement>('style');
 
@@ -81,11 +116,15 @@ describe('createDOMRenderer', () => {
     expect(styleElementsBeforeHydration.length).toBe(styleElementsAfterHydration.length);
 
     // Following rules are present in cache:
-    // - "animationName"
-    // - "color"
-    // - @keyframes + prefixed
-    // - @media
-    expect(Object.keys(clientRenderer.insertionCache)).toHaveLength(5);
+    // - makeResetStyles
+    //   - color
+    //   - :hover + color
+    // - makeStyles
+    //   - "animationName"
+    //   - "color"
+    //   - @keyframes
+    //   - @media
+    expect(Object.keys(clientRenderer.insertionCache)).toHaveLength(6);
     insertRules.forEach(insertRule => {
       expect(insertRule).not.toHaveBeenCalled();
     });

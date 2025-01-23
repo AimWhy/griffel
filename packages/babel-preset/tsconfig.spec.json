@@ -4,7 +4,7 @@
     "jsx": "react",
     "outDir": "../../dist/out-tsc",
     "module": "commonjs",
-    "types": ["jest", "node", "environment"]
+    "types": ["jest", "node", "environment", "static-assets"]
   },
   "include": [
     "__fixtures__/**/code.ts",
@@ -17,6 +17,7 @@
     "**/*.spec.js",
     "**/*.test.jsx",
     "**/*.spec.jsx",
-    "**/*.d.ts"
+    "**/*.d.ts",
+    "jest.config.ts"
   ]
 }

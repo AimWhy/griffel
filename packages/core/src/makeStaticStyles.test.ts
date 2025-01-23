@@ -2,7 +2,7 @@ import { createDOMRenderer } from './renderer/createDOMRenderer';
 import { griffelRendererSerializer } from './common/snapshotSerializers';
 import { makeStaticStyles } from './makeStaticStyles';
 import { makeStyles } from './makeStyles';
-import { GriffelRenderer } from './types';
+import type { GriffelRenderer } from './types';
 
 expect.addSnapshotSerializer(griffelRendererSerializer);
 
@@ -28,9 +28,9 @@ describe('makeStaticStyles', () => {
     useStyles({ renderer });
 
     expect(renderer).toMatchInlineSnapshot(`
+      /** bucket "d" {"data-priority":"0"} **/
       body {
         background: blue;
-        -webkit-transition: all 4s ease;
         transition: all 4s ease;
       }
       .foo {
@@ -59,6 +59,7 @@ describe('makeStaticStyles', () => {
     useStyles({ renderer });
 
     expect(renderer).toMatchInlineSnapshot(`
+      /** bucket "d" {"data-priority":"0"} **/
       @font-face {
         font-family: Open Sans;
         src: url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
@@ -76,6 +77,7 @@ describe('makeStaticStyles', () => {
     useStyles({ renderer });
 
     expect(renderer).toMatchInlineSnapshot(`
+      /** bucket "d" {"data-priority":"0"} **/
       body {
         background: red;
       }
@@ -103,6 +105,7 @@ describe('makeStaticStyles', () => {
     useStyles2({ renderer });
 
     expect(renderer).toMatchInlineSnapshot(`
+      /** bucket "d" {"data-priority":"0"} **/
       body {
         background: blue;
       }
@@ -122,9 +125,10 @@ describe('makeStaticStyles', () => {
     });
 
     useStaticStyles({ renderer });
-    expect(useStyles({ dir: 'ltr', renderer }).root).toBe('___23yvam0 fy9yzz7 f4ybsrx');
+    expect(useStyles({ dir: 'ltr', renderer }).root).toBe('___23yvam0_0000000 fy9yzz7 f4ybsrx');
 
     expect(renderer).toMatchInlineSnapshot(`
+      /** bucket "d" {"data-priority":"0"} **/
       @font-face {
         font-family: Open Sans;
         src: url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
@@ -134,6 +138,25 @@ describe('makeStaticStyles', () => {
       }
       .f4ybsrx {
         font-size: 16px;
+      }
+    `);
+  });
+
+  it('fallback values', () => {
+    const useStyles = makeStaticStyles({
+      body: {
+        background: 'blue',
+        overflowY: ['scroll', 'hidden'],
+      },
+    });
+
+    useStyles({ renderer });
+
+    expect(renderer).toMatchInlineSnapshot(`
+      /** bucket "d" {"data-priority":"0"} **/
+      body {
+        background: blue;
+        overflow-y: hidden;
       }
     `);
   });

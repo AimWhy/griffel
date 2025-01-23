@@ -2,6 +2,1025 @@
   "name": "@griffel/core",
   "entries": [
     {
+      "date": "Thu, 23 Jan 2025 12:09:03 GMT",
+      "tag": "@griffel/core_v1.19.1",
+      "version": "1.19.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "email not defined",
+            "package": "@griffel/core",
+            "commit": "78b2b5f231e3032de8aa1b5c5794a2a4317df42e",
+            "comment": "fix: remove early return"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jan 2025 13:44:43 GMT",
+      "tag": "@griffel/core_v1.19.0",
+      "version": "1.19.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "email not defined",
+            "package": "@griffel/core",
+            "commit": "6bac9a8ff5f10e90393f501e88c18671096d307d",
+            "comment": "feat: support reset styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Nov 2024 09:58:11 GMT",
+      "tag": "@griffel/core_v1.18.2",
+      "version": "1.18.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "suryamalladi@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "4dd2eec22aaff93dead8429c4a35496de7dab438",
+            "comment": "chore: all deprecated shorthands functions are tagged properly"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 31 Oct 2024 16:16:50 GMT",
+      "tag": "@griffel/core_v1.18.1",
+      "version": "1.18.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/core",
+            "comment": "Bump @griffel/style-types to v1.3.0",
+            "commit": "00ba8831f3b895c1600e8211895c0d2b99c13365"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jul 2024 07:31:53 GMT",
+      "tag": "@griffel/core_v1.18.0",
+      "version": "1.18.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "aa24116ea5cf763ee7f56363067a5c386c4c2222",
+            "comment": "feat: add \"classNameHashSalt\" option"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Jul 2024 14:36:29 GMT",
+      "tag": "@griffel/core_v1.17.1",
+      "version": "1.17.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "15496655df98b9d8e8f505b461cc6dbd12e3122e",
+            "comment": "chore: remove development warnings from production code"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 May 2024 08:24:17 GMT",
+      "tag": "@griffel/core_v1.17.0",
+      "version": "1.17.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "1a56464e77f603906e113179d6ce732f9b5b9998",
+            "comment": "feat: add \"classNameHashSalt\" for AOT"
+          },
+          {
+            "author": "chhabrashubhdeep@gmail.com",
+            "package": "@griffel/core",
+            "commit": "f545363cc35245722381f1ec1524f60b7175f3d1",
+            "comment": "feat: add fallback values support in makeStaticStyles"
+          },
+          {
+            "author": "beachball",
+            "package": "@griffel/core",
+            "comment": "Bump @griffel/style-types to v1.2.0",
+            "commit": "6ae570dbbd711a5e95184004f5d4d98a8ffa2df3"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "80ca330e9b475d9d95b13c421fe7df2513ae08c7",
+            "comment": "fix(core): fix hash collisions with at rules"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "3cac9f0799024e21e4efa5439dd90d91732b4fff",
+            "comment": "chore: refactor at rules to be a separate param in functions"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 14:07:14 GMT",
+      "tag": "@griffel/core_v1.16.0",
+      "version": "1.16.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "062a9d5bc3903f0ce7a3450403b19b622caab05d",
+            "comment": "feat: add support for `RESET`"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "b4ed7ac5ab5b490e7a1b38a214c92af359aa3206",
+            "comment": "chore: export getStyleSheetKey() for internal usage"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "0f2eb5e6f199314b47c5a6cb0ef652f3eaa9ea08",
+            "comment": "feat: add support for shorthands"
+          },
+          {
+            "author": "beachball",
+            "package": "@griffel/core",
+            "comment": "Bump @griffel/style-types to v1.1.0",
+            "commit": "9745935b1bd28b02ee7c19d9195883e8454f0810"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "e514e2f9e83d9ee62290eaa262bece8bb0956e34",
+            "comment": "chore: add support for priority in CSS rules"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "e7e8d0610cdf86359513affe1c8ba91b5de15f5c",
+            "comment": "chore: deprecate the most of shorthands.* functions"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "74dd47bf165dee7b3f752ba8939961c7e1a5b1ef",
+            "comment": "chore: update serializer"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Mar 2024 11:33:53 GMT",
+      "tag": "@griffel/core_v1.15.3",
+      "version": "1.15.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/core",
+            "comment": "Bump @griffel/style-types to v1.0.4",
+            "commit": "95326c52b330ad9d286fad926f2aa26914c39061"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jan 2024 11:03:15 GMT",
+      "tag": "@griffel/core_v1.15.2",
+      "version": "1.15.2",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "cb5a11705b70fb2bf0aa2dc71412177062a2d7e3",
+            "comment": "chore: bump to Nx@17.2.8"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "1a226dc4d52466d55e234e6ee7c4977845d8944b",
+            "comment": "chore: bump to Nx@16.10.0"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "9c0b1acf69a4645331d1623b1f0b5484ce5d2cc9",
+            "comment": "chore: bump to Nx@15.9.7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Jan 2024 11:08:40 GMT",
+      "tag": "@griffel/core_v1.15.2",
+      "version": "1.15.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "adf1a0d691656d5aea75c57d65939bb16d3368c8",
+            "comment": "chore: bump csstype"
+          },
+          {
+            "author": "beachball",
+            "package": "@griffel/core",
+            "comment": "Bump @griffel/style-types to v1.0.3",
+            "commit": "0d2e5506d6b9bc9d7e4a102b88c2bb25eff9a34d"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "1594e428f0902da615ff8d9e86ae4512ce9f0389",
+            "comment": "chore: enable \"@typescript-eslint/consistent-type-imports\" lint rule"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Nov 2023 16:42:15 GMT",
+      "tag": "@griffel/core_v1.15.1",
+      "version": "1.15.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "7d72d1eb3439ef8423fe958035a1525da1822750",
+            "comment": "fix: improve detection of custom idents in shorthands.gridArea()"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Nov 2023 14:35:07 GMT",
+      "tag": "@griffel/core_v1.15.0",
+      "version": "1.15.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "c2c510fa92630fe66985a2cf579374acc5f1811b",
+            "comment": "chore: remove prefixing for \"ms-\""
+          }
+        ],
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "8f213a0c040ee833b268cb2558adf976773ac14d",
+            "comment": "feat: add prefixing for \"backdrop-filter\""
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Oct 2023 14:08:55 GMT",
+      "tag": "@griffel/core_v1.14.4",
+      "version": "1.14.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "f001ae503d75d7ddcf70d0633e2f51111b70ed45",
+            "comment": "fix: restore prefixing for \"background-clip: text\""
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Oct 2023 19:09:32 GMT",
+      "tag": "@griffel/core_v1.14.3",
+      "version": "1.14.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "480aba5a6d8a3b295c10dffe80c2ff4e228f9b3d",
+            "comment": "fix(core): trim \">\" selector"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Sep 2023 08:08:43 GMT",
+      "tag": "@griffel/core_v1.14.2",
+      "version": "1.14.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/core",
+            "comment": "Bump @griffel/style-types to v1.0.2",
+            "commit": "744403e2d046701dc82b02460a60e1680bb60f2e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Jul 2023 12:18:47 GMT",
+      "tag": "@griffel/core_v1.14.1",
+      "version": "1.14.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/core",
+            "comment": "Bump @griffel/style-types to v1.0.1",
+            "commit": "fa5f0d726cbdca1cc583ccc7af4578a7f3f6599f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Jul 2023 09:05:33 GMT",
+      "tag": "@griffel/core_v1.14.0",
+      "version": "1.14.0",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "a1aca05ff590ec6cf81616f5c37549e3a2a3f52f",
+            "comment": "chore: remove unused ts-expect-error"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "a3267efa6d08ff72c4843320e09a1a06d1e35be5",
+            "comment": "chore: show bucket names in snapshots"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "bd37c4fe0b21b33c1d548f7abf1b8c58dd1e5280",
+            "comment": "chore(core): move prefixer to stylis directory"
+          }
+        ],
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "9f7710ee6638825ae2c20a240ced14e80dc3032b",
+            "comment": "feat: add API for styles insertion"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "f7c2f6208cac6e5f10a76b9503f0bee94f30df0f",
+            "comment": "feat: support variadic arguments in border* shorthands"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "c33da85cf8d176e47fd07012c41574a735753528",
+            "comment": "fix: makeResetStyles emits at rules into a separate bucket"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Jul 2023 07:32:54 GMT",
+      "tag": "@griffel/core_v1.13.1",
+      "version": "1.13.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "0c22d891363f1b6f01ab5ccddd08ce38f632eab6",
+            "comment": "chore: rework internals of makeStaticStyles"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "47f4df96449fc23545eab7c58ede2e55610c637c",
+            "comment": "fix: add container queries to hash generation"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "b4c28f871df20ed62fa47fdf44de854c05ca3e6a",
+            "comment": "chore: use types from @griffel/style-types"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "c7fd5334a5486a305f19b3fbf81d9d13260ad51d",
+            "comment": "chore: cleanup bundle size fixtures"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Jul 2023 11:31:22 GMT",
+      "tag": "@griffel/core_v1.13.0",
+      "version": "1.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@griffel/core",
+            "commit": "2f75c38dada524264284c2a92c57437309dcf491",
+            "comment": "feat: Prefix according to browser support matrix"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Jun 2023 12:49:54 GMT",
+      "tag": "@griffel/core_v1.12.2",
+      "version": "1.12.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "105857b021ee1d471efc29037a20601fb80bc72a",
+            "comment": "chore: export safeInsertRule()"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 16:07:13 GMT",
+      "tag": "@griffel/core_v1.12.1",
+      "version": "1.12.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "d551a7f5a11b4123d1b353cab37e85058de17eb4",
+            "comment": "fix: export textDecoration shorthand"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Jun 2023 14:18:04 GMT",
+      "tag": "@griffel/core_v1.12.0",
+      "version": "1.12.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "72065bb8301dc423b9e8f0ff37d0097bc025b6c1",
+            "comment": "feat: add shorthand function for `text-decoration`"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "31bb2215926d5224ed2bd50fe9a61677a756a02f",
+            "comment": "fix: bump stylis for proper @layer support"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "9126746567df4cf7ad8fb552c102f6499000264a",
+            "comment": "chore: sort CSS classes inside at rules"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Apr 2023 07:58:49 GMT",
+      "tag": "@griffel/core_v1.11.0",
+      "version": "1.11.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@griffel/core",
+            "commit": "9294b8ce57657b258701f4ec35c69fe58a7845a5",
+            "comment": "feat: Support CSS container queries"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "ff7edd54e829fbeb5453383fe6a19009e44b64b2",
+            "comment": "feat: add shorthands for (padding|margin)(Block|Inline) and bump csstype"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "1012610174bf4e2dc39f6c30ac7dadba07b4cc1a",
+            "comment": "chore(core): hide warnings in Node (part 2)"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Mar 2023 12:45:13 GMT",
+      "tag": "@griffel/core_v1.10.1",
+      "version": "1.10.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "9ad8031fa6346e97d5d444b26d7bdf380f9c69c1",
+            "comment": "chore: hide warnings in Node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Mar 2023 14:51:11 GMT",
+      "tag": "@griffel/core_v1.10.0",
+      "version": "1.10.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "8f10c4dd141a7024f6b7dbe51d44f1aae7c1a77b",
+            "comment": "chore: bump @emotion/hash"
+          }
+        ],
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "f72bc4771c2cf2b1b6fca4027723039adee7fa82",
+            "comment": "feat: add \"insertionPoint\" option to createDOMRenderer()"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "d8e62d7756c8bd3908e2ce5a95ee0a842fc7df9d",
+            "comment": "chore: bump Nx"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Feb 2023 10:23:25 GMT",
+      "tag": "@griffel/core_v1.9.2",
+      "version": "1.9.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "bd8e02e30afc805bc54252de967890aa66eb36ba",
+            "comment": "chore: bump rtl-css-js"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jan 2023 14:06:28 GMT",
+      "tag": "@griffel/core_v1.9.1",
+      "version": "1.9.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "60d299736b2ff1267fd8ce29c06890316e7dfce2",
+            "comment": "chore: adjust console logging to emit a more descriptive error message"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Dec 2022 11:48:33 GMT",
+      "tag": "@griffel/core_v1.9.0",
+      "version": "1.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "77f1f771c2785cefd2d969ff98fff58875adab18",
+            "comment": "feat: expose \"styleElementAttributes\" on GriffelRenderer"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "53a659a4a00fd8e782a45af652ef8911ebf5c8d7",
+            "comment": "fix: avoid mutations in getStyleSheetForBucket"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "7d2e3ba8656afccb6cf0b56e7b7f6cce0ae9fd15",
+            "comment": "fix: do not emit \"undefined\" for CSS rules"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Dec 2022 11:15:19 GMT",
+      "tag": "@griffel/core_v1.8.3",
+      "version": "1.8.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "735cbfdc1e1ca7f12928393acdb98e295ed6133e",
+            "comment": "fix: use global constants"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Nov 2022 10:05:12 GMT",
+      "tag": "@griffel/core_v1.8.2",
+      "version": "1.8.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "ebd004e9e8935e099c1873bf2d4841c773bb8417",
+            "comment": "chore: export \"CSSBucketEntry\" type for internal usage"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Oct 2022 11:06:03 GMT",
+      "tag": "@griffel/core_v1.8.1",
+      "version": "1.8.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "5f2b99cb41fe1fc8c1676c3319e6d8fccd95dd26",
+            "comment": "feat: add validation into mergeClasses for makeResetStyles calls"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Oct 2022 08:36:18 GMT",
+      "tag": "@griffel/core_v1.8.0",
+      "version": "1.8.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "635096302c6e9a8b18e51745c1fadec5ab4674d5",
+            "comment": "chore: add __resetStyles (internal function)"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "4f7c10f9e057cf613deecc2b47cb1777f2a2dc3e",
+            "comment": "chore: add __resetStyles (internal function)"
+          }
+        ],
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "28641c5bc7616ffe3ec327b0de67625bbd9c727c",
+            "comment": "feat: add support for `animationName` in makeResetStyles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 Oct 2022 14:28:43 GMT",
+      "tag": "@griffel/core_v1.7.0",
+      "version": "1.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "67109b0dea4d3e41481784b6cac7c940f5e40def",
+            "comment": "feat: add makeResetStyles to @griffel/core"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "9173966f4f1c69556f68351e6361d9302c674621",
+            "comment": "fix: handle empty strings in mergeClasses()"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "f9a70d8435481f58138eacd0a5035b73b6f93035",
+            "comment": "chore: add bundle size fixtures"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Oct 2022 08:44:33 GMT",
+      "tag": "@griffel/core_v1.6.1",
+      "version": "1.6.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "485ddf103dde824efeb7647e1adb5abd0587e2fe",
+            "comment": "fix: update debug data collection to handle duplicate overrides"
+          },
+          {
+            "author": "tigeroakes@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "9228140c805f662b6c12df4c3f6e45bf9378b4ac",
+            "comment": "fix: add TSDoc to unsupported CSS properties"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "3db315e0aea3851944c6cc430e240ef63eb01de3",
+            "comment": "fix: do not emit sequence hashes for empty sets"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "926fe7376dc15a55d2262ce2d32e895f752adbc2",
+            "comment": "fix: handle nesting in comma separated selectors"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "3a915ea7b6d6716657d5b0e14787fe25c22e5825",
+            "comment": "chore: create stylis plugin to handle :global()"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Aug 2022 11:16:00 GMT",
+      "tag": "@griffel/core_v1.6.0",
+      "version": "1.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@griffel/core",
+            "commit": "5b6a2e6c792e7d4f9702857680a4825efcd40b5f",
+            "comment": "feat: add transition shorthand"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Jul 2022 13:03:12 GMT",
+      "tag": "@griffel/core_v1.5.1",
+      "version": "1.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "79c97b9ec6b4b028e31e17b613e6d89a37bfd6a7",
+            "comment": "feat: Add support for source maps in devtools"
+          },
+          {
+            "author": "dwlad90@gmail.com",
+            "package": "@griffel/core",
+            "commit": "bf8955f8a4b0fe9d553c49a865e8c1b2e9c371b3",
+            "comment": "fix: add css rules to devtools extension debugger when pass renderer on SSR"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "2b80f0c1fae8d5dc0ae66d072f499e25bd6042c4",
+            "comment": "fix: flip CSS properties even if they contain CSS variables"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Jul 2022 10:20:09 GMT",
+      "tag": "@griffel/core_v1.5.0",
+      "version": "1.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "geoff.cox@live.com",
+            "package": "@griffel/core",
+            "commit": "14a7e23b818bb7260f378b62b22db243cc9dd523",
+            "comment": "feat: add shorthand function for `grid-area`"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jun 2022 09:50:50 GMT",
+      "tag": "@griffel/core_v1.4.1",
+      "version": "1.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "13f45f365ef157651ef6dc11651fda94aa9f09a5",
+            "comment": "chore: export getStyleBucketName & normalizeCSSBucketEntry functions for internal usage"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jun 2022 08:37:05 GMT",
+      "tag": "@griffel/core_v1.4.0",
+      "version": "1.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@griffel/core",
+            "commit": "4e4c7c29deae40ae64bd3b6860356d0adeb05e8e",
+            "comment": "feat: create isomorphic stylesheet for DOM renderer"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@griffel/core",
+            "commit": "5897290e8065eb7631770593944ea194cbced029",
+            "comment": "feat: add `compareMediaQueries` option to DOM renderer"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@griffel/core",
+            "commit": "307d727163986ff0bb818a76b2186888622da985",
+            "comment": "feat: insert media queries into separate buckets based on the media query value"
+          },
+          {
+            "author": "riacarmin@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "69f7a31db6383e2b41c185314672fe74945f914e",
+            "comment": "feat: add shorthands support for flex property"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "d516a9aa3b52032ca3419ad5824109394643296b",
+            "comment": "chore: add __css() functions for upcoming CSS extraction"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "ba29eb7d7242d8446ce6e084c309eead8bd14cf3",
+            "comment": "fix: collect devtools data in __styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 May 2022 08:34:48 GMT",
+      "tag": "@griffel/core_v1.3.1",
+      "version": "1.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "ca92d20c52389ce51f089c39b03f2838c8329a60",
+            "comment": "fix: update isDevToolsEnabled check"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 May 2022 16:15:22 GMT",
+      "tag": "@griffel/core_v1.3.0",
+      "version": "1.3.0",
+      "comments": {
+        "none": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "726ddd4397c6991fe1e4df61940e77f3da9f0c83",
+            "comment": "update babelrc with dev env presets"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "2d46633c5a0db31f55fd20c5bce653855ce7b75b",
+            "comment": "add a comment to exports"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "6a0f6e24af80afedf7b47c73f72c71a439b43aca",
+            "comment": "chore: integrate bundle size tooling"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "5b6cdf3ede6983eba5997b26f5696f2ea459606d",
+            "comment": "README update"
+          }
+        ],
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "d7c691201b45f410f1ab34a5aa941175cf12a49d",
+            "comment": "feat: inject devtools when session storage contains __GRIFFEL_DEVTOOLS__"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "addc2c3922ef8b45d4a9028e84808b9a3eee6f9a",
+            "comment": "feat: add support for @layer"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "ea2cde17b426ff4d95f36ff4e71fd070fd5dbff0",
+            "comment": "feat: add shorthand function for outline"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "8a6d1802e2c7a2070abd0213bf14585bbf446e4d",
+            "comment": "feat: add shorthand function for inset"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "01e52783012cb38d91b474858419d417b6c46410",
+            "comment": "feat: generate debug hash sequence for devtools"
+          }
+        ],
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "7540e722795eea0b027207343c74b1cf8eaec1d8",
+            "comment": "fix: fix issue with comma-separated selectors and RTL"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Apr 2022 13:28:28 GMT",
+      "tag": "@griffel/core_v1.2.0",
+      "version": "1.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "05635e139c200e609ddb531f40e144b65f9cdcf3",
+            "comment": "feat: CSS fallback values"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/core",
+            "commit": "2bda4e578a4fcdd1751a3e7496ea9a6df7916012",
+            "comment": "feat: add \"styleElementAttributes\" to createDOMRenderer"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Mar 2022 13:56:06 GMT",
       "tag": "@griffel/core_v1.1.1",
       "version": "1.1.1",

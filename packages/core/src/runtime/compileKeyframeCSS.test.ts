@@ -1,5 +1,5 @@
+import type { GriffelAnimation } from '@griffel/style-types';
 import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeCSS';
-import { GriffelAnimation } from '../types';
 
 describe('compileKeyframeRule', () => {
   it('stringifies an object with keyframes', () => {
@@ -32,7 +32,6 @@ describe('compileKeyframeCSS', () => {
 
     expect(result).toMatchInlineSnapshot(`
       Array [
-        "@-webkit-keyframes foo{from{height:10px;}to{height:50px;}}",
         "@keyframes foo{from{height:10px;}to{height:50px;}}",
       ]
     `);

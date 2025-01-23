@@ -1,21 +1,18 @@
-import type { GriffelStylesStrictCSSObject, GriffelStylesCSSValue } from '../types';
+import type { GriffelStyle } from '@griffel/style-types';
+
 import { generateStyles } from './generateStyles';
+import type { MarginInput } from './types';
 
-type MarginStyle = Pick<GriffelStylesStrictCSSObject, 'marginTop' | 'marginRight' | 'marginBottom' | 'marginLeft'>;
+type MarginStyle = Pick<GriffelStyle, 'marginTop' | 'marginRight' | 'marginBottom' | 'marginLeft'>;
 
-export function margin(all: GriffelStylesCSSValue): MarginStyle;
-export function margin(vertical: GriffelStylesCSSValue, horizontal: GriffelStylesCSSValue): MarginStyle;
-export function margin(
-  top: GriffelStylesCSSValue,
-  horizontal: GriffelStylesCSSValue,
-  bottom: GriffelStylesCSSValue,
-): MarginStyle;
-export function margin(
-  top: GriffelStylesCSSValue,
-  right: GriffelStylesCSSValue,
-  bottom: GriffelStylesCSSValue,
-  left: GriffelStylesCSSValue,
-): MarginStyle;
+/** @deprecated Use `{ margin: '10px 5px 8px 4px' }` instead as Griffel supports CSS shorthands now */
+export function margin(all: MarginInput): MarginStyle;
+/** @deprecated Use `{ margin: '10px 5px' }` instead as Griffel supports CSS shorthands now */
+export function margin(vertical: MarginInput, horizontal: MarginInput): MarginStyle;
+/** @deprecated Use `{ margin: '10px 5px 8px' }` instead as Griffel supports CSS shorthands now */
+export function margin(top: MarginInput, horizontal: MarginInput, bottom: MarginInput): MarginStyle;
+/** @deprecated Use `{ margin: '10px 5px 8px 4px' }` instead as Griffel supports CSS shorthands now */
+export function margin(top: MarginInput, right: MarginInput, bottom: MarginInput, left: MarginInput): MarginStyle;
 
 /**
  * A function that implements CSS spec conformant expansion for "margin"
@@ -27,7 +24,9 @@ export function margin(
  *   margin('1px', 0, '3px', '4px')
  *
  * See https://developer.mozilla.org/en-US/docs/Web/CSS/margin
+ *
+ * @deprecated Just use `{ margin: '10px 5px 8px 4px' }` instead as Griffel supports CSS shorthands now
  */
-export function margin(...values: GriffelStylesCSSValue[]): MarginStyle {
+export function margin(...values: MarginInput[]): MarginStyle {
   return generateStyles<MarginStyle>('margin', '', ...values);
 }

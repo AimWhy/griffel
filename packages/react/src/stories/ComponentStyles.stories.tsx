@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Story } from '@storybook/react';
+import type { StoryObj } from '@storybook/react';
+
 import { makeStyles, mergeClasses, shorthands } from '../';
 
 const tokens = {
@@ -39,10 +40,16 @@ const Button: React.FunctionComponent<{ className?: string; primary?: boolean }>
   return <button {...props} className={mergedClasses} />;
 };
 
-export const ComponentStyles: Story<{ primary: boolean }> = args => {
-  return <Button {...args}>button</Button>;
+export const ComponentStyles: StoryObj<{ primary: boolean }> = {
+  render: args => {
+    return <Button {...args}>button</Button>;
+  },
+
+  args: {
+    primary: false,
+  },
 };
 
-ComponentStyles.args = {
-  primary: false,
+export default {
+  title: 'Component styles',
 };

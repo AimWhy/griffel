@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 import OutputTitle from '@site/src/components/OutputTitle'
@@ -7,6 +7,8 @@ import OutputTitle from '@site/src/components/OutputTitle'
 # makeStaticStyles
 
 Creates styles with a global selector. This is especially useful for CSS resets, for example [normalize.css](https://github.com/necolas/normalize.css/).
+
+`makeStaticStyles` returns [a React hook](https://reactjs.org/docs/hooks-intro.html) that should be called inside a component.
 
 ## Defining styles with objects
 
@@ -96,5 +98,64 @@ function App() {
   useStaticStyles2();
 
   return <div />;
+}
+```
+
+## Usage with `makeStyles`
+
+```tsx
+import { makeStyles, makeStaticStyles, shorthands } from '@griffel/react';
+
+const useStaticStyles = makeStaticStyles({
+  body: {
+    color: 'red',
+    padding: '5px',
+  },
+});
+
+const useClasses = makeStyles({
+  primaryText: {
+    color: 'blue',
+    padding: '10px',
+  },
+});
+
+export default function App(props) {
+  useStaticStyles();
+  const classes = useClasses();
+
+  return <p className={props.primaryText}>Hello world</p>;
+}
+```
+
+## CSS Fallback Properties
+
+Griffel supports CSS fallback properties in order to support older browsers.
+
+Any CSS property accepts an array of values which are all added to the styles.
+Every browser will use the latest valid value (which might be a different one in different browsers, based on supported CSS in that browser):
+
+```js
+import { makeStaticStyles } from '@griffel/react';
+
+const useClasses = makeStaticStyles({
+  body: {
+    overflowY: ['scroll', 'overlay'],
+  },
+});
+
+function App() {
+  useStaticStyles();
+
+  return <div />;
+}
+```
+
+<OutputTitle>Produces following CSS...</OutputTitle>
+
+```css
+body {
+  overflow-y: scroll; /* Fallback for browsers which do not support overflow: overlay */
+  overflow-y: overlay; /* Used by browsers which support overflow: overlay */
 }
 ```

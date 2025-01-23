@@ -10,11 +10,21 @@ import {
   borderStyle,
   borderRadius,
   borderWidth,
+  flex,
   gap,
+  gridArea,
   margin,
+  marginBlock,
+  marginInline,
   padding,
+  paddingBlock,
+  paddingInline,
   overflow,
-} from './shorthands/index';
+  inset,
+  outline,
+  transition,
+  textDecoration,
+} from './shorthands';
 
 export const shorthands = {
   border,
@@ -26,27 +36,52 @@ export const shorthands = {
   borderStyle,
   borderRadius,
   borderWidth,
+  flex,
   gap,
+  gridArea,
   margin,
+  marginBlock,
+  marginInline,
   padding,
+  paddingBlock,
+  paddingInline,
   overflow,
+  inset,
+  outline,
+  transition,
+  textDecoration,
 };
 
 export { createDOMRenderer } from './renderer/createDOMRenderer';
 export type { CreateDOMRendererOptions } from './renderer/createDOMRenderer';
-export { styleBucketOrdering } from './renderer/getStyleSheetForBucket';
 export { rehydrateRendererCache } from './renderer/rehydrateRendererCache';
+export { safeInsertRule } from './renderer/safeInsertRule';
 
 export { mergeClasses } from './mergeClasses';
-export { makeStaticStyles } from './makeStaticStyles';
 export { makeStyles } from './makeStyles';
+export type { MakeStylesOptions } from './makeStyles';
+export { makeStaticStyles } from './makeStaticStyles';
+export type { MakeStaticStylesOptions } from './makeStaticStyles';
+export { makeResetStyles } from './makeResetStyles';
+
 export { resolveStyleRulesForSlots } from './resolveStyleRulesForSlots';
 
-// Private exports, are used by build time transforms
-export { resolveStyleRules } from './runtime/resolveStyleRules';
+// Private exports, are used by build time transforms or other tools
+export { __css } from './__css';
 export { __styles } from './__styles';
+export { __resetCSS } from './__resetCSS';
+export { __resetStyles } from './__resetStyles';
+
+export { normalizeCSSBucketEntry } from './runtime/utils/normalizeCSSBucketEntry';
+export { styleBucketOrdering, getStyleSheetKey } from './renderer/getStyleSheetForBucket';
+export { defaultCompareMediaQueries } from './renderer/createDOMRenderer';
+export { getStyleBucketName } from './runtime/getStyleBucketName';
+export { reduceToClassNameForSlots } from './runtime/reduceToClassNameForSlots';
+export { resolveStyleRules } from './runtime/resolveStyleRules';
+export { resolveResetStyleRules } from './runtime/resolveResetStyleRules';
 
 export * from './constants';
+
 export type {
   // Static styles
   GriffelStaticStyle,
@@ -54,13 +89,21 @@ export type {
   // Styles
   GriffelAnimation,
   GriffelStyle,
+  // Reset styles
+  GriffelResetStyle,
   // Internal types
+} from '@griffel/style-types';
+
+export type {
   CSSClasses,
   CSSClassesMapBySlot,
+  CSSBucketEntry,
   CSSRulesByBucket,
   StyleBucketName,
   // Util
-  MakeStaticStylesOptions,
-  MakeStylesOptions,
   GriffelRenderer,
+  GriffelInsertionFactory,
 } from './types';
+
+// Private exports, are used by devtools
+export type { DebugCSSRules, DebugSequence, DebugResult } from './devtools';

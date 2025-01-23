@@ -1,0 +1,818 @@
+{
+  "name": "@griffel/devtools",
+  "entries": [
+    {
+      "date": "Thu, 23 Jan 2025 12:09:03 GMT",
+      "tag": "@griffel/devtools_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.29",
+            "commit": "78b2b5f231e3032de8aa1b5c5794a2a4317df42e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jan 2025 13:44:43 GMT",
+      "tag": "@griffel/devtools_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "email not defined",
+            "package": "@griffel/devtools",
+            "commit": "6bac9a8ff5f10e90393f501e88c18671096d307d",
+            "comment": "feat: support reset styles"
+          },
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.28",
+            "commit": "fa0a08b0452669a9bc4e0f83b2dbcd85b97f733e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2025 10:03:24 GMT",
+      "tag": "@griffel/devtools_v0.2.34",
+      "version": "0.2.34",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/devtools",
+            "commit": "9282f8271164121521b4a03e7fbd7ce3da57960c",
+            "comment": "fix: include `index.html` in publish"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Nov 2024 09:58:11 GMT",
+      "tag": "@griffel/devtools_v0.2.33",
+      "version": "0.2.33",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.27",
+            "commit": "4dd2eec22aaff93dead8429c4a35496de7dab438"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 31 Oct 2024 16:16:50 GMT",
+      "tag": "@griffel/devtools_v0.2.32",
+      "version": "0.2.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.26",
+            "commit": "00ba8831f3b895c1600e8211895c0d2b99c13365"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jul 2024 07:31:53 GMT",
+      "tag": "@griffel/devtools_v0.2.31",
+      "version": "0.2.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.25",
+            "commit": "aa24116ea5cf763ee7f56363067a5c386c4c2222"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Jul 2024 14:36:29 GMT",
+      "tag": "@griffel/devtools_v0.2.30",
+      "version": "0.2.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.24",
+            "commit": "15496655df98b9d8e8f505b461cc6dbd12e3122e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 May 2024 08:24:17 GMT",
+      "tag": "@griffel/devtools_v0.2.29",
+      "version": "0.2.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.23",
+            "commit": "6ae570dbbd711a5e95184004f5d4d98a8ffa2df3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 14:07:14 GMT",
+      "tag": "@griffel/devtools_v0.2.28",
+      "version": "0.2.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.22",
+            "commit": "9745935b1bd28b02ee7c19d9195883e8454f0810"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Mar 2024 11:33:53 GMT",
+      "tag": "@griffel/devtools_v0.2.27",
+      "version": "0.2.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.21",
+            "commit": "95326c52b330ad9d286fad926f2aa26914c39061"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jan 2024 11:03:15 GMT",
+      "tag": "@griffel/devtools_v0.2.26",
+      "version": "0.2.26",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/devtools",
+            "commit": "1a226dc4d52466d55e234e6ee7c4977845d8944b",
+            "comment": "chore: bump to Nx@16.10.0"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/devtools",
+            "commit": "cb5a11705b70fb2bf0aa2dc71412177062a2d7e3",
+            "comment": "chore: bump to Nx@17.2.8"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/devtools",
+            "commit": "9c0b1acf69a4645331d1623b1f0b5484ce5d2cc9",
+            "comment": "chore: bump to Nx@15.9.7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Jan 2024 11:08:40 GMT",
+      "tag": "@griffel/devtools_v0.2.26",
+      "version": "0.2.26",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/devtools",
+            "commit": "1594e428f0902da615ff8d9e86ae4512ce9f0389",
+            "comment": "chore: enable \"@typescript-eslint/consistent-type-imports\" lint rule"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/devtools",
+            "commit": "8b9a354f0474894b9b0922a1d0fc468668b9cdfc",
+            "comment": "chore: fix getOriginalPosition() to work in Storybook"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/devtools",
+            "commit": "a9615bdffbca009d460338b532e76d29605a5f31",
+            "comment": "chore: use newer version of react-prism"
+          },
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.20",
+            "commit": "0d2e5506d6b9bc9d7e4a102b88c2bb25eff9a34d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Nov 2023 16:42:15 GMT",
+      "tag": "@griffel/devtools_v0.2.25",
+      "version": "0.2.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.19",
+            "commit": "7d72d1eb3439ef8423fe958035a1525da1822750"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Nov 2023 14:35:07 GMT",
+      "tag": "@griffel/devtools_v0.2.24",
+      "version": "0.2.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.18",
+            "commit": "8f213a0c040ee833b268cb2558adf976773ac14d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Oct 2023 14:08:55 GMT",
+      "tag": "@griffel/devtools_v0.2.23",
+      "version": "0.2.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.17",
+            "commit": "f001ae503d75d7ddcf70d0633e2f51111b70ed45"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Oct 2023 19:09:32 GMT",
+      "tag": "@griffel/devtools_v0.2.22",
+      "version": "0.2.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.16",
+            "commit": "1476e34bd093df1132181acfebbb8c51922d5c8b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Sep 2023 08:08:43 GMT",
+      "tag": "@griffel/devtools_v0.2.21",
+      "version": "0.2.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.15",
+            "commit": "744403e2d046701dc82b02460a60e1680bb60f2e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Jul 2023 12:18:47 GMT",
+      "tag": "@griffel/devtools_v0.2.20",
+      "version": "0.2.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.14",
+            "commit": "fa5f0d726cbdca1cc583ccc7af4578a7f3f6599f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Jul 2023 09:05:33 GMT",
+      "tag": "@griffel/devtools_v0.2.19",
+      "version": "0.2.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.13",
+            "commit": "1d0df068e80f3cb602651f1875edbd625d221c47"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Jul 2023 07:32:54 GMT",
+      "tag": "@griffel/devtools_v0.2.18",
+      "version": "0.2.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.12",
+            "commit": "47f4df96449fc23545eab7c58ede2e55610c637c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Jul 2023 11:31:22 GMT",
+      "tag": "@griffel/devtools_v0.2.17",
+      "version": "0.2.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.11",
+            "commit": "2f75c38dada524264284c2a92c57437309dcf491"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Jun 2023 12:49:54 GMT",
+      "tag": "@griffel/devtools_v0.2.16",
+      "version": "0.2.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.10",
+            "commit": "105857b021ee1d471efc29037a20601fb80bc72a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 16:07:13 GMT",
+      "tag": "@griffel/devtools_v0.2.15",
+      "version": "0.2.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.9",
+            "commit": "d551a7f5a11b4123d1b353cab37e85058de17eb4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Jun 2023 14:18:04 GMT",
+      "tag": "@griffel/devtools_v0.2.14",
+      "version": "0.2.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.8",
+            "commit": "02499fc94501e5f859aef982db3d9a23bc2a13bc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Apr 2023 07:58:49 GMT",
+      "tag": "@griffel/devtools_v0.2.13",
+      "version": "0.2.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.7",
+            "commit": "ff7edd54e829fbeb5453383fe6a19009e44b64b2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Mar 2023 12:45:13 GMT",
+      "tag": "@griffel/devtools_v0.2.12",
+      "version": "0.2.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.6",
+            "commit": "9ad8031fa6346e97d5d444b26d7bdf380f9c69c1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Mar 2023 14:51:11 GMT",
+      "tag": "@griffel/devtools_v0.2.11",
+      "version": "0.2.11",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/devtools",
+            "commit": "d8e62d7756c8bd3908e2ce5a95ee0a842fc7df9d",
+            "comment": "chore: bump Nx"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.5",
+            "commit": "3edb840d4139d81744620d8bded738d814cd71f5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Feb 2023 10:23:25 GMT",
+      "tag": "@griffel/devtools_v0.2.10",
+      "version": "0.2.10",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/devtools",
+            "commit": "bb07d370d3084b9bd7f2941fd82be79fa6c99b4b",
+            "comment": "chore: update tsconfig files"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.4",
+            "commit": "5837c739ee141a9099a031449870dbca46ce648d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jan 2023 14:06:28 GMT",
+      "tag": "@griffel/devtools_v0.2.9",
+      "version": "0.2.9",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/devtools",
+            "commit": "bd0d13ae15ccd09c045287f246438b7cf02d5f81",
+            "comment": "chore: remove unused import"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.3",
+            "commit": "d87ba30b4f07fc759c0abb18ff86fd57dd79296f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Dec 2022 11:48:33 GMT",
+      "tag": "@griffel/devtools_v0.2.8",
+      "version": "0.2.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.2",
+            "commit": "7d2e3ba8656afccb6cf0b56e7b7f6cce0ae9fd15"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Dec 2022 11:15:19 GMT",
+      "tag": "@griffel/devtools_v0.2.7",
+      "version": "0.2.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.1",
+            "commit": "9b94a45ba5bd526460dd97aaea103cf64d9d5450"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Nov 2022 09:32:24 GMT",
+      "tag": "@griffel/devtools_v0.2.6",
+      "version": "0.2.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.5.0",
+            "commit": "f5c9ec05b8892ef7388e876671b475daf64b28b6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Nov 2022 10:05:12 GMT",
+      "tag": "@griffel/devtools_v0.2.5",
+      "version": "0.2.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.4.3",
+            "commit": "fc3403a602d5dd0b206ceeb48ca689cb2fdf6d37"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Oct 2022 11:06:03 GMT",
+      "tag": "@griffel/devtools_v0.2.4",
+      "version": "0.2.4",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/devtools",
+            "commit": "f9fb5726c89abff0c7f5e07c6e1d1c8e0ebbcde6",
+            "comment": "fix: cleanup dependencies in @griffel/devtools"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.4.2",
+            "commit": "f9fb5726c89abff0c7f5e07c6e1d1c8e0ebbcde6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Oct 2022 08:36:18 GMT",
+      "tag": "@griffel/devtools_v0.2.3",
+      "version": "0.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.4.1",
+            "commit": "32d9b0bfa4372343d710368b6bed1cc5185a6684"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 Oct 2022 14:28:43 GMT",
+      "tag": "@griffel/devtools_v0.2.2",
+      "version": "0.2.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.4.0",
+            "commit": "9173966f4f1c69556f68351e6361d9302c674621"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Oct 2022 08:44:33 GMT",
+      "tag": "@griffel/devtools_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@griffel/devtools",
+            "commit": "0e358cbda0f663246ed7c1cc1ad7db0bdc86c22c",
+            "comment": "fix devtools to resolve relative source url"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@griffel/devtools",
+            "commit": "485ddf103dde824efeb7647e1adb5abd0587e2fe",
+            "comment": "fix: show override for same rule, and highlight both selected rule and overriding rule on click; fix griffel className parsing"
+          },
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.3.2",
+            "commit": "6828b9b754d65621e12a8fbff54c9f486eab032e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Aug 2022 11:16:00 GMT",
+      "tag": "@griffel/devtools_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@griffel/devtools",
+            "commit": "8d663649fdf12b4fa939b9158bef03660ae03d6d",
+            "comment": "feat: 'inspect source' button opens real source instead of the compiled source"
+          },
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.3.1",
+            "commit": "545253c7bd0c84f3c72803b6b88946e617922714"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Aug 2022 15:28:36 GMT",
+      "tag": "@griffel/devtools_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.3.0",
+            "commit": "5fe534790f489fc865785463f716b196d5db0cd1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Jul 2022 13:03:12 GMT",
+      "tag": "@griffel/devtools_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "dwlad90@gmail.com",
+            "package": "@griffel/devtools",
+            "commit": "bf8955f8a4b0fe9d553c49a865e8c1b2e9c371b3",
+            "comment": "fix: add css rules to devtools extension debugger when pass renderer on SSR"
+          }
+        ],
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@griffel/devtools",
+            "commit": "79c97b9ec6b4b028e31e17b613e6d89a37bfd6a7",
+            "comment": "feat: Add button next to slot name to jump to source"
+          },
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.2.3",
+            "commit": "2b80f0c1fae8d5dc0ae66d072f499e25bd6042c4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Jul 2022 14:42:50 GMT",
+      "tag": "@griffel/devtools_v0.0.2",
+      "version": "0.0.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@griffel/devtools",
+            "commit": "8ee7bb5af8f4fe073d7988aa8bda054b8c14841c",
+            "comment": "chore: make package public for initial release"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@griffel/devtools",
+            "commit": "8338b9cd66bc71ad23a81164b0cf83397ba0b54a",
+            "comment": "chore: Initial release"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Jul 2022 10:20:09 GMT",
+      "tag": "@griffel/devtools_v0.0.1",
+      "version": "0.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.2.2",
+            "commit": "9b1d23a654c1af9ccde3aa4807b70dff2cdf58d7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jun 2022 09:50:50 GMT",
+      "tag": "@griffel/devtools_v0.0.1",
+      "version": "0.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.2.1",
+            "commit": "604926fc2fdd4596cd122b92b82a3f5e5d40d23d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jun 2022 08:37:05 GMT",
+      "tag": "@griffel/devtools_v0.0.1",
+      "version": "0.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.2.0",
+            "commit": "6b98eb67f7b4399bcc9bd66607e296640449ae98"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 May 2022 15:06:34 GMT",
+      "tag": "@griffel/devtools_v0.0.1",
+      "version": "0.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.1.0",
+            "commit": "ef665ab8dbc42c4db6625144357041f55e78c46e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 May 2022 08:34:48 GMT",
+      "tag": "@griffel/devtools_v0.0.1",
+      "version": "0.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.0.5",
+            "commit": "ca92d20c52389ce51f089c39b03f2838c8329a60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 May 2022 16:15:22 GMT",
+      "tag": "@griffel/devtools_v0.0.1",
+      "version": "0.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/devtools",
+            "comment": "Bump @griffel/react to v1.0.4",
+            "commit": "dbf9adc8acedba645ee95f469353836d1ae5fa6a"
+          }
+        ]
+      }
+    }
+  ]
+}

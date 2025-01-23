@@ -1,25 +1,26 @@
 {
-  "root": "apps/website",
+  "name": "@griffel/website",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/website/src",
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "cwd": "apps/website",
-        "commands": [{ "command": "docusaurus build --out-dir ../../dist/apps/website" }],
-        "outputPath": ["dist/apps/website"]
-      }
+        "commands": [{ "command": "docusaurus build --out-dir ../../dist/apps/website" }]
+      },
+      "outputs": ["{workspaceRoot}/dist/apps/website"]
     },
     "serve": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "cwd": "apps/website",
         "commands": [{ "command": "docusaurus start" }]
       }
     },
     "type-check": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "cwd": "apps/website",
         "commands": [{ "command": "tsc -b --pretty" }],

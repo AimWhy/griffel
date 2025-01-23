@@ -1,0 +1,172 @@
+{
+  "name": "@griffel/style-types",
+  "entries": [
+    {
+      "date": "Thu, 31 Oct 2024 16:16:50 GMT",
+      "tag": "@griffel/style-types_v1.3.0",
+      "version": "1.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "alinazaieva@microsoft.com",
+            "package": "@griffel/style-types",
+            "commit": "00ba8831f3b895c1600e8211895c0d2b99c13365",
+            "comment": "Support font-display in @font-face in makeStaticStyles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 May 2024 08:24:17 GMT",
+      "tag": "@griffel/style-types_v1.2.0",
+      "version": "1.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "chhabrashubhdeep@gmail.com",
+            "package": "@griffel/style-types",
+            "commit": "f545363cc35245722381f1ec1524f60b7175f3d1",
+            "comment": "feat: add support for fallback values in GriffelStaticStyle"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 14:07:14 GMT",
+      "tag": "@griffel/style-types_v1.1.0",
+      "version": "1.1.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/style-types",
+            "commit": "50e95e9f78354deda53ba23113ce2ee608021eb0",
+            "comment": "fix: use custom fallback type for legacy types"
+          }
+        ],
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/style-types",
+            "commit": "0f2eb5e6f199314b47c5a6cb0ef652f3eaa9ea08",
+            "comment": "feat: add support for shorthands"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Mar 2024 11:33:53 GMT",
+      "tag": "@griffel/style-types_v1.0.4",
+      "version": "1.0.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/style-types",
+            "commit": "95326c52b330ad9d286fad926f2aa26914c39061",
+            "comment": "fix: use custom fallback type for properties"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jan 2024 11:03:15 GMT",
+      "tag": "@griffel/style-types_v1.0.3",
+      "version": "1.0.3",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/style-types",
+            "commit": "1a226dc4d52466d55e234e6ee7c4977845d8944b",
+            "comment": "chore: bump to Nx@16.10.0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Jan 2024 11:08:40 GMT",
+      "tag": "@griffel/style-types_v1.0.3",
+      "version": "1.0.3",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/style-types",
+            "commit": "1594e428f0902da615ff8d9e86ae4512ce9f0389",
+            "comment": "chore: enable \"@typescript-eslint/consistent-type-imports\" lint rule"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/style-types",
+            "commit": "adf1a0d691656d5aea75c57d65939bb16d3368c8",
+            "comment": "chore: bump csstype"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Sep 2023 08:08:43 GMT",
+      "tag": "@griffel/style-types_v1.0.2",
+      "version": "1.0.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/style-types",
+            "commit": "2f9d1cd192ea5da49f9a6076e2668f95fa92e689",
+            "comment": "fix: allow CSS variables in animationName, stricter types for selectors"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Jul 2023 12:18:47 GMT",
+      "tag": "@griffel/style-types_v1.0.1",
+      "version": "1.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/style-types",
+            "commit": "fa5f0d726cbdca1cc583ccc7af4578a7f3f6599f",
+            "comment": "fix: update types for \"animationName\""
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Jul 2023 07:32:54 GMT",
+      "tag": "@griffel/style-types_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "major": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/style-types",
+            "commit": "0fc42a4200ed2c220a6b2e5bd2503d47aeaa0a1a",
+            "comment": "chore: initial release"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/style-types",
+            "commit": "c9458be32a5047d44332ca15b9eb6c5389bdc522",
+            "comment": "fix: resolve recursive typings issue"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/style-types",
+            "commit": "b4c28f871df20ed62fa47fdf44de854c05ca3e6a",
+            "comment": "there is a change file already"
+          }
+        ]
+      }
+    }
+  ]
+}

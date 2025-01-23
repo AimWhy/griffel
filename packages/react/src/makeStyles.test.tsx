@@ -1,5 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import { act } from 'react-dom/test-utils';
 
 import { makeStyles } from './makeStyles';
 
@@ -16,8 +17,11 @@ describe('makeStyles', () => {
       makeStyles({ root: { color: 'red' } });
       return null;
     };
-    const container = document.createElement('div');
+    const root = createRoot(document.createElement('div'));
 
-    expect(() => ReactDOM.render(<Example />, container)).toThrow(/All makeStyles\(\) calls should be top level/);
+    expect(() => act(() => root.render(<Example />))).toThrow(/All makeStyles\(\) calls should be top level/);
+
+    // Should not throw outside React components after rendering
+    expect(() => makeStyles({ root: { color: 'red' } })).not.toThrow();
   });
 });

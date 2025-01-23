@@ -1,8 +1,29 @@
 import { mergeClasses } from './mergeClasses';
 import { makeStyles } from './makeStyles';
+import type { MakeStylesOptions } from './makeStyles';
 import { createDOMRenderer } from './renderer/createDOMRenderer';
-import { MakeStylesOptions } from './types';
-import { SEQUENCE_PREFIX } from './constants';
+import { RESET, SEQUENCE_PREFIX, SEQUENCE_SIZE } from './constants';
+import { makeResetStyles } from './makeResetStyles';
+
+function removeSequenceHash(classNames: string) {
+  const indexOfSequence = classNames.indexOf(SEQUENCE_PREFIX);
+
+  if (indexOfSequence === -1) {
+    return classNames;
+  }
+
+  return (classNames.substr(0, indexOfSequence - 1) + classNames.substr(indexOfSequence + SEQUENCE_SIZE)).trim();
+}
+
+const mergeClassesSequenceHashRemoval: jest.SnapshotSerializerPlugin = {
+  test(value) {
+    return typeof value === 'string';
+  },
+  print(_value) {
+    return removeSequenceHash(_value as string);
+  },
+};
+expect.addSnapshotSerializer(mergeClassesSequenceHashRemoval);
 
 const options: MakeStylesOptions = {
   dir: 'ltr',
@@ -33,6 +54,11 @@ describe('mergeClasses', () => {
     expect(mergeClasses(undefined, false)).toBe('');
   });
 
+  it('handles empty classes', () => {
+    expect(mergeClasses('ui-button', '', 'ui-toogle-button')).toBe('ui-button ui-toogle-button');
+    expect(mergeClasses('', '')).toBe('');
+  });
+
   it('performs deduplication for multiple arguments', () => {
     const classes = makeStyles({
       block: { display: 'block' },
@@ -43,13 +69,17 @@ describe('mergeClasses', () => {
 
     const resultClassName = makeStyles({ root: { display: 'grid', paddingLeft: '5px' } })(options).root;
 
-    expect(mergeClasses(classes.block, classes.flex, classes.grid, classes.padding)).toBe(resultClassName);
+    expect(mergeClasses(classes.block, classes.flex, classes.grid, classes.padding)).toMatchInlineSnapshot(
+      removeSequenceHash(resultClassName),
+    );
   });
 
   it('order of classes is not important', () => {
     const className = makeStyles({ root: { display: 'block' } })(options).root;
 
-    expect(mergeClasses('ui-button', className, 'ui-button-content')).toBe(`ui-button ui-button-content ${className}`);
+    expect(mergeClasses('ui-button', className, 'ui-button-content')).toMatchInlineSnapshot(
+      `ui-button ui-button-content ${removeSequenceHash(className)}`,
+    );
   });
 
   it('order of classes is not important for multilevel overrides', () => {
@@ -60,7 +90,9 @@ describe('mergeClasses', () => {
     );
     const className2 = makeStyles({ root: { display: 'grid' } })(options).root;
 
-    expect(mergeClasses(className1, className2)).toBe(`ui-button ui-button-content ${className2}`);
+    expect(mergeClasses(className1, className2)).toMatchInlineSnapshot(
+      `ui-button ui-button-content ${removeSequenceHash(className2)}`,
+    );
   });
 
   it('merges multi-level overrides properly', () => {
@@ -76,9 +108,9 @@ describe('mergeClasses', () => {
     const sequence2 = mergeClasses('ui-flex', className3, className4);
     const sequence3 = mergeClasses(sequence1, sequence2, className5);
 
-    expect(sequence1).toBe(`ui-button ${className2}`);
-    expect(sequence2).toBe('ui-flex ___nsiv7r0 f13qh94s f15vdbe4');
-    expect(sequence3).toBe('ui-button ui-flex ___ma4nwa0 f13qh94s f15vdbe4 f1rqyxcv');
+    expect(sequence1).toMatchInlineSnapshot(`ui-button ${removeSequenceHash(className2)}`);
+    expect(sequence2).toMatchInlineSnapshot('ui-flex f13qh94s f15vdbe4');
+    expect(sequence3).toMatchInlineSnapshot('ui-button ui-flex f13qh94s f15vdbe4 f1rqyxcv');
   });
 
   it('warns if an unregistered sequence was passed', () => {
@@ -86,8 +118,12 @@ describe('mergeClasses', () => {
     const error = jest.spyOn(console, 'error').mockImplementationOnce(() => {});
     const className = makeStyles({ root: { display: 'block' } })(options).root;
 
-    expect(mergeClasses(className, `${SEQUENCE_PREFIX}abcdefg oprsqrt`)).toBe(className);
-    expect(error).toHaveBeenCalledWith(expect.stringMatching(/passed string contains an identifier \(___abcdefg\)/));
+    expect(mergeClasses(className, `${SEQUENCE_PREFIX}abcdefg_abcdefg oprsqrt`)).toMatchInlineSnapshot(
+      removeSequenceHash(className),
+    );
+    expect(error).toHaveBeenCalledWith(
+      expect.stringMatching(/passed string contains an identifier \(___abcdefg_abcdefg\)/),
+    );
   });
 
   it('warns if strings are not properly merged', () => {
@@ -115,6 +151,19 @@ describe('mergeClasses', () => {
     expect(error).toHaveBeenCalledWith(expect.stringMatching(/that has different direction \(dir="rtl"\)/));
   });
 
+  it('warns if contains multiple classes from makeResetStyles', () => {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    const error = jest.spyOn(console, 'error').mockImplementationOnce(() => {});
+
+    const className1 = makeResetStyles({ display: 'block' })(options);
+    const className2 = makeResetStyles({ display: 'grid' })(options);
+
+    expect(mergeClasses(className1, className2)).toMatchInlineSnapshot(`r13o7eu2 rlgj0h8`);
+    expect(error).toHaveBeenCalledWith(
+      expect.stringMatching(/a passed string contains multiple classes produced by makeResetStyles/),
+    );
+  });
+
   describe('"dir" option', () => {
     it('performs deduplication for RTL classes', () => {
       const computeClasses = makeStyles({
@@ -125,12 +174,16 @@ describe('mergeClasses', () => {
       const rtlClasses1 = computeClasses({ ...options, dir: 'rtl' });
       const rtlClasses2 = computeClasses({ ...options, dir: 'rtl' });
 
-      expect(mergeClasses(rtlClasses1.start, rtlClasses2.start)).toBe(rtlClasses1.start);
-      expect(mergeClasses(rtlClasses1.start, rtlClasses2.start)).toBe(rtlClasses2.start);
-
-      expect(mergeClasses(rtlClasses1.start, rtlClasses2.start, rtlClasses1.end, rtlClasses2.end)).toBe(
-        '___1soy3ld f93e62u fo2qazs',
+      expect(mergeClasses(rtlClasses1.start, rtlClasses2.start)).toMatchInlineSnapshot(
+        removeSequenceHash(rtlClasses1.start),
       );
+      expect(mergeClasses(rtlClasses1.start, rtlClasses2.start)).toMatchInlineSnapshot(
+        removeSequenceHash(rtlClasses2.start),
+      );
+
+      expect(
+        mergeClasses(rtlClasses1.start, rtlClasses2.start, rtlClasses1.end, rtlClasses2.end),
+      ).toMatchInlineSnapshot('f93e62u fo2qazs');
     });
 
     it('merges multi-level overrides properly', () => {
@@ -142,7 +195,7 @@ describe('mergeClasses', () => {
       const sequence1 = mergeClasses('ui-button', classes.block);
       const sequence2 = mergeClasses(sequence1, classes.grid);
 
-      expect(sequence2).toBe(`ui-button ${classes.grid}`);
+      expect(sequence2).toMatchInlineSnapshot(`ui-button ${removeSequenceHash(classes.grid)}`);
     });
 
     it('classes for different text directions should not collide', () => {
@@ -155,8 +208,53 @@ describe('mergeClasses', () => {
       const rtlClassName1 = computeClasses1({ ...options, dir: 'rtl' }).root;
       const rtlClassName2 = computeClasses2({ ...options, dir: 'rtl' }).root;
 
-      expect(mergeClasses(ltrClassName1, ltrClassName2)).toBe('___1t65jhk fe3e8s9 frdkuqy');
-      expect(mergeClasses(rtlClassName1, rtlClassName2)).toBe('___w1tqsn0 fe3e8s9 f81rol6');
+      expect(mergeClasses(ltrClassName1, ltrClassName2)).toMatchInlineSnapshot('fe3e8s9 frdkuqy');
+      expect(mergeClasses(rtlClassName1, rtlClassName2)).toMatchInlineSnapshot('fe3e8s9 f81rol6');
+    });
+  });
+
+  describe('resets of styles', () => {
+    it('handles resets', () => {
+      const computeClassesA = makeStyles({ root: { color: 'red', display: 'flex' } });
+      const computeClassesB = makeStyles({ root: { backgroundColor: 'orange', color: RESET } });
+      const computeClassesC = makeStyles({ root: { display: RESET } });
+
+      const classNameA = computeClassesA(options).root;
+      const classNameB = computeClassesB(options).root;
+      const classNameC = computeClassesC(options).root;
+
+      expect(mergeClasses(classNameA, classNameB)).toMatchInlineSnapshot(`f22iagw ftu9nv0`);
+      expect(mergeClasses(classNameA, classNameC)).toMatchInlineSnapshot(`fe3e8s9`);
+      expect(mergeClasses(classNameA, classNameB, classNameC)).toMatchInlineSnapshot(`ftu9nv0`);
+    });
+  });
+});
+
+describe('merges classes and generates sequence hashes', () => {
+  it('development', () => {
+    jest.isolateModules(() => {
+      process.env.NODE_ENV = 'development';
+
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const { mergeClasses } = require('./mergeClasses');
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const { makeStyles } = require('./makeStyles');
+      const className1 = makeStyles({ root: { display: 'block' } })(options).root;
+      const className2 = makeStyles({ root: { display: 'flex' } })(options).root;
+      expect(mergeClasses(className1, className2)).toBe('___1gzszts_39qb7g0 f22iagw');
+    });
+  });
+  it('production', async () => {
+    jest.isolateModules(() => {
+      process.env.NODE_ENV = 'production';
+
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const { mergeClasses } = require('./mergeClasses');
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const { makeStyles } = require('./makeStyles');
+      const className1 = makeStyles({ root: { display: 'block' } })(options).root;
+      const className2 = makeStyles({ root: { display: 'flex' } })(options).root;
+      expect(mergeClasses(className1, className2)).toBe('___1gzszts f22iagw');
     });
   });
 });

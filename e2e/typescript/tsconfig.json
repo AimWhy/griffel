@@ -4,6 +4,7 @@
     "allowJs": true,
     "checkJs": true,
     "module": "CommonJS",
+    "noEmit": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
@@ -17,5 +18,9 @@
     {
       "path": "./tsconfig.lib.json"
     }
-  ]
+  ],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"],
+    "swc": true
+  }
 }

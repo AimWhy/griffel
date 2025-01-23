@@ -1,17 +1,26 @@
 import hashString from '@emotion/hash';
-import { HASH_PREFIX } from '../../constants';
 
-export interface HashedClassNameParts {
+import { HASH_PREFIX } from '../../constants';
+import { atRulesToString } from './hashPropertyKey';
+import type { AtRules } from './types';
+
+interface HashedClassNameParts {
   property: string;
   value: string;
-  pseudo: string;
-  media: string;
-  support: string;
+  salt: string;
+  selector: string;
 }
 
-export function hashClassName({ media, property, pseudo, support, value }: HashedClassNameParts): string {
-  // Trimming of value is required to generate consistent hashes
-  const classNameHash = hashString(pseudo + media + support + property + value.trim());
-
-  return HASH_PREFIX + classNameHash;
+export function hashClassName({ property, selector, salt, value }: HashedClassNameParts, atRules: AtRules): string {
+  return (
+    HASH_PREFIX +
+    hashString(
+      salt +
+        selector +
+        atRulesToString(atRules) +
+        property +
+        // Trimming of value is required to generate consistent hashes
+        value.trim(),
+    )
+  );
 }

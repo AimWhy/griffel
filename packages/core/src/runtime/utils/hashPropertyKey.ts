@@ -1,9 +1,24 @@
 import hash from '@emotion/hash';
-import { PropertyHash } from '../../types';
 
-export function hashPropertyKey(pseudo: string, media: string, support: string, property: string): PropertyHash {
+import type { PropertyHash } from '../../types';
+import type { AtRules } from './types';
+
+function addAtRulePrefix(atRule: string, prefix: string): string {
+  return atRule ? prefix + atRule : atRule;
+}
+
+export function atRulesToString(atRules: AtRules): string {
+  return (
+    addAtRulePrefix(atRules.container, 'c') +
+    addAtRulePrefix(atRules.media, 'm') +
+    addAtRulePrefix(atRules.layer, 'l') +
+    addAtRulePrefix(atRules.supports, 's')
+  );
+}
+
+export function hashPropertyKey(selector: string, property: string, atRules: AtRules): PropertyHash {
   // uniq key based on property & selector, used for merging later
-  const computedKey = pseudo + media + support + property;
+  const computedKey = selector + atRulesToString(atRules) + property;
 
   // "key" can be really long as it includes selectors, we use hashes to reduce sizes of keys
   // ".foo :hover" => "abcd"
@@ -19,7 +34,7 @@ export function hashPropertyKey(pseudo: string, media: string, support: string, 
   const startsWithNumber = firstCharCode >= 48 && firstCharCode <= 57;
 
   if (startsWithNumber) {
-    return String.fromCharCode(firstCharCode + 17) + hashedKey.substr(1);
+    return String.fromCharCode(firstCharCode + 17) + hashedKey.slice(1);
   }
 
   return hashedKey;

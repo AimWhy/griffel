@@ -3,15 +3,23 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
+    "checkJs": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
+    "noEmit": true,
     "outDir": "../../dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "types": [
+      "../../node_modules/@docusaurus/module-type-aliases",
+      "../../node_modules/@docusaurus/theme-classic",
+      "environment",
+      "static-assets",
+      "webpack-env"
+    ]
   },
-  "types": ["environment", "static-assets", "@docusaurus/module-type-aliases", "@docusaurus/theme-classic"],
   "include": ["./src/**/*.ts", "./src/**/*.tsx", "./src/**/*.js"]
 }

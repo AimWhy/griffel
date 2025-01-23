@@ -1,0 +1,375 @@
+{
+  "name": "@griffel/shadow-dom",
+  "entries": [
+    {
+      "date": "Thu, 23 Jan 2025 12:09:03 GMT",
+      "tag": "@griffel/shadow-dom_v0.2.9",
+      "version": "0.2.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.19.1",
+            "commit": "78b2b5f231e3032de8aa1b5c5794a2a4317df42e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jan 2025 13:44:43 GMT",
+      "tag": "@griffel/shadow-dom_v0.2.8",
+      "version": "0.2.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.19.0",
+            "commit": "fa0a08b0452669a9bc4e0f83b2dbcd85b97f733e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Nov 2024 09:58:11 GMT",
+      "tag": "@griffel/shadow-dom_v0.2.7",
+      "version": "0.2.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.18.2",
+            "commit": "4dd2eec22aaff93dead8429c4a35496de7dab438"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 31 Oct 2024 16:16:50 GMT",
+      "tag": "@griffel/shadow-dom_v0.2.6",
+      "version": "0.2.6",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/shadow-dom",
+            "commit": "291da5fea61bd08be595df1cdce171b755612898",
+            "comment": "chore: bump Nx to 19.8.6"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.18.1",
+            "commit": "00ba8831f3b895c1600e8211895c0d2b99c13365"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jul 2024 07:31:53 GMT",
+      "tag": "@griffel/shadow-dom_v0.2.5",
+      "version": "0.2.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.18.0",
+            "commit": "aa24116ea5cf763ee7f56363067a5c386c4c2222"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Jul 2024 14:36:29 GMT",
+      "tag": "@griffel/shadow-dom_v0.2.4",
+      "version": "0.2.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.17.1",
+            "commit": "15496655df98b9d8e8f505b461cc6dbd12e3122e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 May 2024 08:24:17 GMT",
+      "tag": "@griffel/shadow-dom_v0.2.3",
+      "version": "0.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.17.0",
+            "commit": "6ae570dbbd711a5e95184004f5d4d98a8ffa2df3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 14:07:14 GMT",
+      "tag": "@griffel/shadow-dom_v0.2.2",
+      "version": "0.2.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/shadow-dom",
+            "commit": "b4ed7ac5ab5b490e7a1b38a214c92af359aa3206",
+            "comment": "chore: add support for priority in CSS rules"
+          },
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.16.0",
+            "commit": "9745935b1bd28b02ee7c19d9195883e8454f0810"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Mar 2024 11:33:53 GMT",
+      "tag": "@griffel/shadow-dom_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.15.3",
+            "commit": "95326c52b330ad9d286fad926f2aa26914c39061"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jan 2024 11:03:15 GMT",
+      "tag": "@griffel/shadow-dom_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/shadow-dom",
+            "commit": "1a226dc4d52466d55e234e6ee7c4977845d8944b",
+            "comment": "chore: bump to Nx@16.10.0"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/shadow-dom",
+            "commit": "9c0b1acf69a4645331d1623b1f0b5484ce5d2cc9",
+            "comment": "chore: bump to Nx@15.9.7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Jan 2024 11:08:40 GMT",
+      "tag": "@griffel/shadow-dom_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@griffel/shadow-dom",
+            "commit": "0d2e5506d6b9bc9d7e4a102b88c2bb25eff9a34d",
+            "comment": "feat: add insertionPoint API to @griffel/shadow-dom"
+          },
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.15.2",
+            "commit": "0d2e5506d6b9bc9d7e4a102b88c2bb25eff9a34d"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/shadow-dom",
+            "commit": "1594e428f0902da615ff8d9e86ae4512ce9f0389",
+            "comment": "chore: enable \"@typescript-eslint/consistent-type-imports\" lint rule"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Nov 2023 16:42:15 GMT",
+      "tag": "@griffel/shadow-dom_v0.1.10",
+      "version": "0.1.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.15.1",
+            "commit": "7d72d1eb3439ef8423fe958035a1525da1822750"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Nov 2023 14:35:07 GMT",
+      "tag": "@griffel/shadow-dom_v0.1.9",
+      "version": "0.1.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.15.0",
+            "commit": "8f213a0c040ee833b268cb2558adf976773ac14d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Oct 2023 14:08:55 GMT",
+      "tag": "@griffel/shadow-dom_v0.1.8",
+      "version": "0.1.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.14.4",
+            "commit": "f001ae503d75d7ddcf70d0633e2f51111b70ed45"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Oct 2023 19:09:32 GMT",
+      "tag": "@griffel/shadow-dom_v0.1.7",
+      "version": "0.1.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.14.3",
+            "commit": "1476e34bd093df1132181acfebbb8c51922d5c8b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Sep 2023 08:08:43 GMT",
+      "tag": "@griffel/shadow-dom_v0.1.6",
+      "version": "0.1.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.14.2",
+            "commit": "744403e2d046701dc82b02460a60e1680bb60f2e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Jul 2023 12:18:47 GMT",
+      "tag": "@griffel/shadow-dom_v0.1.5",
+      "version": "0.1.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.14.1",
+            "commit": "fa5f0d726cbdca1cc583ccc7af4578a7f3f6599f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Jul 2023 09:05:33 GMT",
+      "tag": "@griffel/shadow-dom_v0.1.4",
+      "version": "0.1.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.14.0",
+            "commit": "1d0df068e80f3cb602651f1875edbd625d221c47"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Jul 2023 07:32:54 GMT",
+      "tag": "@griffel/shadow-dom_v0.1.3",
+      "version": "0.1.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.13.1",
+            "commit": "47f4df96449fc23545eab7c58ede2e55610c637c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Jul 2023 11:31:22 GMT",
+      "tag": "@griffel/shadow-dom_v0.1.2",
+      "version": "0.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.13.0",
+            "commit": "2f75c38dada524264284c2a92c57437309dcf491"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Jul 2023 15:16:01 GMT",
+      "tag": "@griffel/shadow-dom_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/shadow-dom",
+            "commit": "58b1c70f0879ba93605cd86070de75939c01a224",
+            "comment": "fix: update sorting logic"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Jun 2023 12:49:54 GMT",
+      "tag": "@griffel/shadow-dom_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@griffel/shadow-dom",
+            "commit": "105857b021ee1d471efc29037a20601fb80bc72a",
+            "comment": "feat: initial release"
+          },
+          {
+            "author": "beachball",
+            "package": "@griffel/shadow-dom",
+            "comment": "Bump @griffel/core to v1.12.2",
+            "commit": "105857b021ee1d471efc29037a20601fb80bc72a"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "@griffel/next-extraction-plugin",
+  "version": "0.1.10",
+  "description": "NextJS plugin that add Griffel's CSS extraction to webpack loaders pipeline",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/griffel"
+  },
+  "dependencies": {
+    "@griffel/webpack-extraction-plugin": "^0.5.9",
+    "browserslist": "^4.19.1",
+    "tslib": "^2.1.0"
+  },
+  "peerDependencies": {
+    "next": ">=13"
+  }
+}

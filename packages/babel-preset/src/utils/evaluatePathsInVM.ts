@@ -1,11 +1,12 @@
-import { NodePath, types as t } from '@babel/core';
-import { Scope } from '@babel/traverse';
-import * as template from '@babel/template';
+import { types as t } from '@babel/core';
+import type { NodePath } from '@babel/core';
 import generator from '@babel/generator';
-import { Module, StrictOptions } from '@linaria/babel-preset';
+import * as template from '@babel/template';
+import type { Scope } from '@babel/traverse';
+import type { StrictOptions } from '@linaria/babel-preset';
+import { Module } from '@linaria/babel-preset';
 
 import type { BabelPluginOptions } from '../types';
-import { astify } from './astify';
 
 const EVAL_EXPORT_NAME = '__mkPreval';
 
@@ -27,7 +28,7 @@ function evaluate(code: string, filename: string, pluginOptions: Required<BabelP
 
   mod.evaluate(code, [EVAL_EXPORT_NAME]);
 
-  return mod.exports[EVAL_EXPORT_NAME];
+  return (mod.exports as { [EVAL_EXPORT_NAME]: unknown[] })[EVAL_EXPORT_NAME];
 }
 
 function findFreeName(scope: Scope, name: string): string {
@@ -80,6 +81,10 @@ function addPreval(path: NodePath<t.Program>, lazyDeps: Array<t.Expression | t.S
   );
 }
 
+function isError(e: unknown): e is Error {
+  return Object.prototype.toString.call(e) === '[object Error]';
+}
+
 /**
  * Evaluates passed paths in Node environment to resolve all lazy values.
  */
@@ -106,7 +111,12 @@ export function evaluatePathsInVM(
 
   for (let i = 0; i < nodePaths.length; i++) {
     const nodePath = nodePaths[i];
+    const result = results[i];
 
-    nodePath.replaceWith(astify(results[i]));
+    if (isError(result)) {
+      throw result;
+    }
+
+    nodePath.replaceWith(t.valueToNode(result));
   }
 }

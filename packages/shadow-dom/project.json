@@ -1,0 +1,100 @@
+{
+  "name": "@griffel/shadow-dom",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/shadow-dom/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/shadow-dom",
+        "tsConfig": "packages/shadow-dom/tsconfig.lib.json",
+        "skipTypeField": true,
+        "skipTypeCheck": true,
+        "project": "packages/shadow-dom/package.json",
+        "entryFile": "packages/shadow-dom/src/index.ts",
+        "compiler": "babel",
+        "sourceMap": true,
+        "rollupConfig": ["@nx/react/plugins/bundle-rollup", "tools/getRollupOptions.js"],
+        "external": ["tslib"],
+        "format": ["esm", "cjs"],
+        "assets": [
+          {
+            "glob": "packages/shadow-dom/README.md",
+            "input": ".",
+            "output": "."
+          },
+          {
+            "glob": "LICENSE.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/shadow-dom"],
+      "options": { "jestConfig": "packages/shadow-dom/jest.config.ts" }
+    },
+    "bundle-size": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        {
+          "target": "build"
+        }
+      ],
+      "options": {
+        "cwd": "packages/shadow-dom",
+        "commands": [
+          {
+            "command": "monosize measure"
+          }
+        ]
+      }
+    },
+    "storybook": {
+      "executor": "@nx/storybook:storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "packages/shadow-dom/.storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@nx/storybook:build",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "configDir": "packages/shadow-dom/.storybook",
+        "outputDir": "dist/storybook/@griffel/shadow-dom"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "type-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/shadow-dom",
+        "commands": [
+          {
+            "command": "tsc -b --pretty"
+          }
+        ]
+      },
+      "outputs": []
+    }
+  }
+}

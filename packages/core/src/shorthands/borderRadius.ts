@@ -1,7 +1,8 @@
-import type { GriffelStylesStrictCSSObject, GriffelStylesCSSValue } from '../types';
+import type { GriffelStyle } from '@griffel/style-types';
+import type { BorderRadiusInput } from './types';
 
 type BorderRadiusStyle = Pick<
-  GriffelStylesStrictCSSObject,
+  GriffelStyle,
   'borderBottomRightRadius' | 'borderBottomLeftRadius' | 'borderTopRightRadius' | 'borderTopLeftRadius'
 >;
 
@@ -16,12 +17,14 @@ type BorderRadiusStyle = Pick<
  *   borderRadius('1px', 0, '3px', '4px')
  *
  * See https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius
+ *
+ * @deprecated Just use `{ borderRadius: '10px 5% 8px 4px' }` instead as Griffel supports CSS shorthands now
  */
 export function borderRadius(
-  value1: GriffelStylesCSSValue,
-  value2: GriffelStylesCSSValue = value1,
-  value3: GriffelStylesCSSValue = value1,
-  value4: GriffelStylesCSSValue = value2,
+  value1: BorderRadiusInput,
+  value2: BorderRadiusInput = value1,
+  value3: BorderRadiusInput = value1,
+  value4: BorderRadiusInput = value2,
 ): BorderRadiusStyle {
   return {
     borderBottomRightRadius: value3,
